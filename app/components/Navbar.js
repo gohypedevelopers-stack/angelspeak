@@ -12,7 +12,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav style={{ padding: '1rem 0', borderBottom: '1px solid var(--gray-800)', position: 'relative', overflow: 'hidden' }}>
+      <nav style={{ padding: '1rem 0', position: 'relative', overflow: 'hidden' }}>
         <div className="container" style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', alignItems: 'center', opacity: isSearchOpen ? 0 : 1, transition: 'opacity 0.2s ease', pointerEvents: isSearchOpen ? 'none' : 'auto' }}>
           
           {/* Left: Navigation Links & Mobile Menu */}

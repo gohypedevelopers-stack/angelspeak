@@ -6,14 +6,16 @@ export default function Home() {
   return (
     <>
       {/* 1. CINEMATIC HERO SECTION */}
-      <section style={{ height: 'calc(100vh - 120px)', position: 'relative', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <div style={{ position: 'absolute', inset: 0, zIndex: -1 }}>
-          <img 
-            src="https://images.unsplash.com/photo-1511556820780-d912e42b4980?q=80&w=2000&auto=format&fit=crop" 
-            alt="Hero Background" 
-            style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.4) contrast(1.2) grayscale(0.5)' }} 
-          />
-        </div>
+      <section style={{ height: '100vh', position: 'relative', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div 
+          className="parallax-bg"
+          style={{ 
+            position: 'absolute', inset: 0, zIndex: -1,
+            backgroundImage: 'url("https://images.unsplash.com/photo-1511556820780-d912e42b4980?q=80&w=2000&auto=format&fit=crop")',
+            backgroundSize: 'cover', backgroundPosition: 'center',
+            filter: 'brightness(0.4) contrast(1.2) grayscale(0.5)'
+          }}
+        />
         <div className="container animate-fade-in" style={{ width: '100%', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <h1 className="fw-black uppercase" style={{ fontSize: 'clamp(2rem, 5.5vw, 6rem)', whiteSpace: 'nowrap', marginBottom: '1.5rem', color: 'var(--foreground)' }}>
             EVERY PIECE IS A CHANNEL
@@ -124,17 +126,25 @@ export default function Home() {
         `}} />
         <div className="chapter-grid">
           
-          <Link href="/world" className="group chapter-col-8" style={{ position: 'relative', overflow: 'hidden', display: 'block' }}>
-            <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?q=80&w=1200&auto=format&fit=crop" alt="Origin" className="hover-scale" style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'grayscale(0.8) brightness(0.6)' }} />
-            <div style={{ position: 'absolute', bottom: 'clamp(1rem, 5vw, 3rem)', left: 'clamp(1rem, 5vw, 3rem)' }}>
+          <Link href="/world" className="group chapter-col-8 parallax-bg hover-scale" style={{ 
+            position: 'relative', overflow: 'hidden', display: 'block',
+            backgroundImage: 'url("https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?q=80&w=1200&auto=format&fit=crop")',
+            backgroundSize: 'cover', backgroundPosition: 'center'
+          }}>
+            <div style={{ position: 'absolute', inset: 0, backgroundColor: 'rgba(0,0,0,0.5)', transition: 'background-color 0.4s ease' }} className="overlay"></div>
+            <div style={{ position: 'absolute', bottom: 'clamp(1rem, 5vw, 3rem)', left: 'clamp(1rem, 5vw, 3rem)', zIndex: 2 }}>
               <p className="fs-sm uppercase fw-bold" style={{ color: 'var(--accent)', marginBottom: '0.5rem', letterSpacing: '0.1em' }}>CHAPTER 01</p>
               <h3 className="fs-4xl fw-black uppercase">ORIGIN</h3>
             </div>
           </Link>
 
-          <Link href="/world" className="group chapter-col-4" style={{ position: 'relative', overflow: 'hidden', display: 'block' }}>
-            <img src="https://images.unsplash.com/photo-1550684376-efcbd6e3f031?q=80&w=800&auto=format&fit=crop" alt="Wilderness" className="hover-scale" style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'grayscale(0.8) brightness(0.6)' }} />
-            <div style={{ position: 'absolute', bottom: 'clamp(1rem, 5vw, 3rem)', left: 'clamp(1rem, 5vw, 2rem)' }}>
+          <Link href="/world" className="group chapter-col-4 parallax-bg hover-scale" style={{ 
+            position: 'relative', overflow: 'hidden', display: 'block',
+            backgroundImage: 'url("https://images.unsplash.com/photo-1550684376-efcbd6e3f031?q=80&w=800&auto=format&fit=crop")',
+            backgroundSize: 'cover', backgroundPosition: 'center'
+          }}>
+            <div style={{ position: 'absolute', inset: 0, backgroundColor: 'rgba(0,0,0,0.5)', transition: 'background-color 0.4s ease' }} className="overlay"></div>
+            <div style={{ position: 'absolute', bottom: 'clamp(1rem, 5vw, 3rem)', left: 'clamp(1rem, 5vw, 2rem)', zIndex: 2 }}>
               <p className="fs-sm uppercase fw-bold" style={{ color: 'var(--accent)', marginBottom: '0.5rem', letterSpacing: '0.1em' }}>CHAPTER 02</p>
               <h3 className="fs-3xl fw-black uppercase">WILDERNESS</h3>
             </div>

@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import Navbar from './components/Navbar';
+import StickyHeader from './components/StickyHeader';
+import CustomCursor from './components/CustomCursor';
 import { CartProvider } from './context/CartContext';
 import './globals.css';
 
@@ -13,13 +14,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body suppressHydrationWarning>
         <CartProvider>
+          <CustomCursor />
           <div className="noise-overlay"></div>
-          <div style={{ position: 'sticky', top: 0, zIndex: 100, backgroundColor: 'var(--background)' }}>
-            <div className="announcement-bar fs-xs fw-bold text-center uppercase" style={{ backgroundColor: 'var(--foreground)', color: 'var(--background)', padding: '8px 0', letterSpacing: '0.05em' }}>
-              DROP 1 — BUILT IN CHAOS. 1 AUGUST. 250 PIECES. NO RESTOCK.
-            </div>
-            <Navbar />
-          </div>
+          <StickyHeader />
           <main style={{ minHeight: '80vh' }}>
             {children}
           </main>

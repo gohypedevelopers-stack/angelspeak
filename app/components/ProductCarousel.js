@@ -39,18 +39,26 @@ export default function ProductCarousel() {
         {products.map((product) => (
           <div key={product.id} className="group" style={{ minWidth: '350px', width: '350px', flexShrink: 0, scrollSnapAlign: 'start' }}>
             <div style={{ aspectRatio: '1/1', backgroundColor: '#e8e8e8', marginBottom: '2rem', overflow: 'hidden', position: 'relative' }}>
-              <Link href={`/shop/${product.slug}`}>
+              <Link href={`/shop/${product.slug}`} style={{ display: 'block', width: '100%', height: '100%' }}>
                 <img 
                   src={product.image} 
                   alt={product.title} 
-                  className="hover-scale"
-                  style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }} 
+                  className="primary-img"
+                  style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'contain', transition: 'opacity 0.4s ease' }} 
                 />
+                {product.hoverImage && (
+                  <img 
+                    src={product.hoverImage} 
+                    alt={`${product.title} Alternate`} 
+                    className="hover-img"
+                    style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'contain', opacity: 0, transition: 'all 0.5s cubic-bezier(0.16, 1, 0.3, 1)' }} 
+                  />
+                )}
               </Link>
               <div style={{ position: 'absolute', inset: 0, backgroundColor: 'rgba(0,0,0,0.5)', opacity: 0, transition: 'opacity 0.3s ease', display: 'flex', alignItems: 'center', justifyContent: 'center', pointerEvents: 'none' }} className="overlay">
                 <button 
                   className="btn" 
-                  style={{ padding: '0.8rem 1.5rem', pointerEvents: 'auto', cursor: 'pointer' }}
+                  style={{ padding: '0.8rem 1.5rem', pointerEvents: 'auto', cursor: 'pointer', transform: 'translateY(10px)', transition: 'all 0.3s ease' }}
                   onClick={(e) => {
                     e.preventDefault();
                     addToCart(product);
@@ -70,6 +78,10 @@ export default function ProductCarousel() {
       </div>
       <style dangerouslySetInnerHTML={{__html: `
         .group:hover .overlay { opacity: 1 !important; }
+        .group:hover .overlay .btn { transform: translateY(0) !important; }
+        .group:hover .primary-img { opacity: 0 !important; }
+        .group:hover .hover-img { opacity: 1 !important; transform: scale(1.05); }
+        
         .custom-scrollbar::-webkit-scrollbar { height: 8px; }
         .custom-scrollbar::-webkit-scrollbar-track { background: var(--gray-900); border-radius: 4px; margin: 0 2rem; }
         .custom-scrollbar::-webkit-scrollbar-thumb { background: var(--gray-500); border-radius: 4px; }
