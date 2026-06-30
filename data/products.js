@@ -71,7 +71,7 @@ export const products = [
     chapter: "Heavyweight protection for the way down.",
     price: "₹7,500",
     image: "/product7.jpg",
-    description: "Built for the aftermath. When the adrenaline fades, you need armor. 450gsm ultra-heavyweight cotton fleece, double-lined hood, dropped shoulders.",
+    description: "Built for the aftermath. When the adrenaline fades, you need armour. 450gsm ultra-heavyweight cotton fleece, double-lined hood, dropped shoulders.",
     fabric: "450gsm cotton fleece · oversized boxy fit. The model is wearing size L.",
     scarcity: "Limited to 150 across the drop. No restock.",
     slug: "descent-hoodie"
@@ -104,7 +104,7 @@ export const products = [
     chapter: "Unforgiving conditions require an unforgiving shell.",
     price: "₹12,000",
     image: "/product10.jpg",
-    description: "Water-repellent, wind-resistant, fully taped seams. The Summit Shell doesn't breathe, it protects. Featuring asymmetric zips and matte hardware.",
+    description: "Water-repellent, wind-resistant, fully taped seams. The Summit Shell doesn't breathe; it protects. Featuring asymmetric zips and matte hardware.",
     fabric: "Nylon ripstop with DWR coating · tech fit. The model is wearing size L.",
     scarcity: "Limited to 100 jackets. No restock.",
     slug: "summit-shell"
