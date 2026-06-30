@@ -38,13 +38,13 @@ export default function RootLayout({ children }) {
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                     <Link href="/world">The World</Link>
                     <Link href="/shop">The Drops</Link>
-                    <Link href="#">Join the Climb</Link>
+                    <Link href="/">Join the Climb</Link>
                   </div>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', color: 'var(--gray-400)' }}>
-                    <Link href="#">Size & Fit</Link>
-                    <Link href="#">Exchanges</Link>
-                    <Link href="#">FAQ</Link>
-                    <Link href="#">Contact</Link>
+                    <Link href="/shop/the-ascent-tee">Size & Fit</Link>
+                    <Link href="/shop/the-ascent-tee">Exchanges</Link>
+                    <Link href="/world">FAQ</Link>
+                    <Link href="mailto:support@angelspeak.com">Contact</Link>
                   </div>
                 </div>
               </div>
