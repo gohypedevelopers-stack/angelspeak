@@ -15,17 +15,13 @@ export default function Home() {
           />
         </div>
         <div className="container animate-fade-in" style={{ width: '100%', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          <h1 className="fs-hero fw-black uppercase" style={{ marginBottom: '1.5rem', color: 'var(--foreground)' }}>
-            EVERY PIECE IS A CHANNEL.
+          <h1 className="fw-black uppercase" style={{ fontSize: 'clamp(2rem, 5.5vw, 6rem)', whiteSpace: 'nowrap', marginBottom: '1.5rem', color: 'var(--foreground)' }}>
+            EVERY PIECE IS A CHANNEL
           </h1>
-          <p className="fs-lg delay-200 animate-fade-in" style={{ maxWidth: '600px', marginBottom: '3rem', color: 'var(--accent)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
-            The garment is the channel between you and the force pulling you toward your peak.
+          <p className="fs-lg delay-200 animate-fade-in" style={{ maxWidth: '800px', marginBottom: '3rem', color: 'var(--accent)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
+            The garment is the channel between you and the force pulling you toward your peak
           </p>
-          <div className="delay-300 animate-fade-in">
-            <Link href="/shop" className="btn" style={{ padding: '1.2rem 3rem', fontSize: '1rem', backgroundColor: 'var(--foreground)', color: 'var(--background)' }}>
-              CLAIM YOUR CHAPTER
-            </Link>
-          </div>
+
         </div>
       </section>
 
@@ -51,38 +47,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* NEW: 3. THE MANIFESTO (CHAPTER 2 INSPIRED) */}
-      <section style={{ padding: '10rem 2rem', backgroundColor: 'var(--background)', position: 'relative', overflow: 'hidden' }}>
-        <div className="container" style={{ maxWidth: '1200px', position: 'relative' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '4rem' }}>
-            <div style={{ width: '40px', height: '2px', backgroundColor: 'var(--accent)' }}></div>
-            <p className="fs-sm uppercase fw-bold" style={{ color: 'var(--accent)', letterSpacing: '0.2em', margin: 0 }}>The Manifesto</p>
-          </div>
-          
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-            <h2 className="fw-black uppercase" style={{ fontSize: 'clamp(2.5rem, 6vw, 5.5rem)', lineHeight: '0.9', letterSpacing: '-0.03em', color: 'var(--foreground)' }}>
-              Angels Peak is a<br/>
-              manifesto of <span style={{ color: 'var(--gray-500)', fontStyle: 'italic' }}>resilience.</span>
-            </h2>
-            
-            <h2 className="fw-black uppercase" style={{ fontSize: 'clamp(2.5rem, 6vw, 5.5rem)', lineHeight: '0.9', letterSpacing: '-0.03em', color: 'var(--foreground)', marginLeft: 'auto', textAlign: 'right', maxWidth: '900px', marginTop: '2rem' }}>
-              Embrace the ascent with a fearless blend of isolation, <span style={{ WebkitTextStroke: '2px var(--foreground)', color: 'transparent' }}>chaos,</span> and minimalist grit.
-            </h2>
-            
-            <h2 className="fw-black uppercase" style={{ fontSize: 'clamp(2.5rem, 6vw, 5.5rem)', lineHeight: '0.9', letterSpacing: '-0.03em', color: 'var(--foreground)', marginTop: '2rem' }}>
-              We reject the valley.<br/>
-              <span style={{ borderBottom: '6px solid var(--foreground)', paddingBottom: '0.5rem' }}>We embrace the climb.</span>
-            </h2>
-          </div>
-          
-          <div style={{ marginTop: '6rem', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', borderTop: '1px solid var(--gray-800)', paddingTop: '2rem' }}>
-            <img src="/Angel_peak_logo_White.png" alt="Icon" style={{ height: '40px', opacity: 0.5 }} />
-            <p className="fs-base uppercase fw-bold" style={{ maxWidth: '400px', textAlign: 'right', color: 'var(--gray-400)', lineHeight: '1.6' }}>
-              Creating pieces that act as a channel between you and your peak.
-            </p>
-          </div>
-        </div>
-      </section>
+
 
       {/* 4. HORIZONTAL DROPS CAROUSEL */}
       <ProductCarousel />
@@ -219,6 +184,39 @@ export default function Home() {
           </form>
         </div>
       </section>
+      {/* NEW: 3. THE MANIFESTO (CHAPTER 2 INSPIRED) */}
+      <section style={{ padding: '10rem 2rem', backgroundColor: 'var(--background)', position: 'relative', overflow: 'hidden' }}>
+        <div className="container" style={{ maxWidth: '1200px', position: 'relative' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '4rem' }}>
+            <div style={{ width: '40px', height: '2px', backgroundColor: 'var(--accent)' }}></div>
+            <p className="fs-sm uppercase fw-bold" style={{ color: 'var(--accent)', letterSpacing: '0.2em', margin: 0 }}>The Manifesto</p>
+          </div>
+          
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+            <h2 className="fw-black uppercase" style={{ fontSize: 'clamp(2.5rem, 6vw, 5.5rem)', lineHeight: '0.9', letterSpacing: '-0.03em', color: 'var(--foreground)' }}>
+              Angels Peak is a<br/>
+              manifesto of <span style={{ color: 'var(--gray-500)', fontStyle: 'italic' }}>resilience.</span>
+            </h2>
+            
+            <h2 className="fw-black uppercase" style={{ fontSize: 'clamp(2.5rem, 6vw, 5.5rem)', lineHeight: '0.9', letterSpacing: '-0.03em', color: 'var(--foreground)', marginLeft: 'auto', textAlign: 'right', maxWidth: '900px', marginTop: '2rem' }}>
+              Embrace the ascent with a fearless blend of isolation, <span style={{ WebkitTextStroke: '2px var(--foreground)', color: 'transparent' }}>chaos,</span> and minimalist grit.
+            </h2>
+            
+            <h2 className="fw-black uppercase" style={{ fontSize: 'clamp(2.5rem, 6vw, 5.5rem)', lineHeight: '0.9', letterSpacing: '-0.03em', color: 'var(--foreground)', marginTop: '2rem' }}>
+              We reject the valley.<br/>
+              <span style={{ borderBottom: '6px solid var(--foreground)', paddingBottom: '0.5rem' }}>We embrace the climb.</span>
+            </h2>
+          </div>
+          
+          <div style={{ marginTop: '6rem', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', borderTop: '1px solid var(--gray-800)', paddingTop: '2rem' }}>
+            <img src="/Angel_peak_logo_White.png" alt="Icon" style={{ height: '40px', opacity: 0.5 }} />
+            <p className="fs-base uppercase fw-bold" style={{ maxWidth: '400px', textAlign: 'right', color: 'var(--gray-400)', lineHeight: '1.6' }}>
+              Creating pieces that act as a channel between you and your peak.
+            </p>
+          </div>
+        </div>
+      </section>
+
     </>
   );
 }
