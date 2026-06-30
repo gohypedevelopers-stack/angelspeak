@@ -56,7 +56,7 @@ export default function Home() {
       <section style={{ backgroundColor: 'var(--gray-900)' }}>
         <div className="grid-half">
           <div style={{ aspectRatio: '4/5', overflow: 'hidden', position: 'relative' }}>
-            <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=1200&auto=format&fit=crop" alt="The Ascent Tee Detail" style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'grayscale(100%) brightness(0.8)' }} />
+            <img src="/product1.jpg" alt="The Ascent Tee Detail" style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'grayscale(100%) brightness(0.8)' }} />
             <div style={{ position: 'absolute', top: '2rem', left: '2rem', backgroundColor: 'var(--foreground)', color: 'var(--background)', padding: '0.5rem 1rem', fontWeight: '900', fontSize: '0.75rem', letterSpacing: '0.1em' }}>
               FLAGSHIP 01
             </div>
@@ -170,7 +170,7 @@ export default function Home() {
             YOU'RE EARLY.<br/>THAT'S THE POINT.
           </h2>
           <p className="fs-base fw-bold uppercase" style={{ color: 'var(--gray-800)', marginBottom: '3rem', letterSpacing: '0.05em' }}>
-            Built in Chaos drops soon. The waitlist climbs first. Leave your number, we'll open the door before anyone else.
+            Built in Chaos drops soon. The waitlist climbs first. Leave your number. We'll open the door before anyone else.
           </p>
           <form style={{ display: 'flex', gap: '1rem', maxWidth: '500px', margin: '0 auto', flexDirection: 'column' }}>
             <input 
