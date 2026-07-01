@@ -136,7 +136,7 @@ export default function Home() {
         <ScrollReveal delay={100}>
           <div className="chapter-grid">
             
-            <Link href="/world" className="group chapter-col-8 parallax-bg hover-scale" style={{ 
+            <Link href="/about-us" className="group chapter-col-8 parallax-bg hover-scale" style={{ 
               position: 'relative', overflow: 'hidden', display: 'block',
               backgroundImage: 'url("https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?q=80&w=1200&auto=format&fit=crop")',
               backgroundSize: 'cover', backgroundPosition: 'center'
@@ -148,7 +148,7 @@ export default function Home() {
               </div>
             </Link>
 
-            <Link href="/world" className="group chapter-col-4 parallax-bg hover-scale" style={{ 
+            <Link href="/about-us" className="group chapter-col-4 parallax-bg hover-scale" style={{ 
               position: 'relative', overflow: 'hidden', display: 'block',
               backgroundImage: 'url("https://images.unsplash.com/photo-1550684376-efcbd6e3f031?q=80&w=800&auto=format&fit=crop")',
               backgroundSize: 'cover', backgroundPosition: 'center'

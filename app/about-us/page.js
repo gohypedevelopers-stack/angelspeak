@@ -1,10 +1,10 @@
-export default function World() {
+export default function AboutUs() {
   return (
     <div style={{ paddingTop: '8rem', paddingBottom: '8rem' }}>
       <div className="container">
         <div style={{ maxWidth: '800px', margin: '0 auto' }}>
           <h1 className="fs-4xl fw-black uppercase animate-fade-in" style={{ marginBottom: '4rem', letterSpacing: '0.05em' }}>
-            The World
+            About Us
           </h1>
 
           <div className="fs-lg animate-fade-in delay-200" style={{ lineHeight: '1.8', color: 'var(--accent)' }}>
