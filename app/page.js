@@ -219,12 +219,10 @@ export default function Home() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
               <h2 className="fw-black uppercase" style={{ fontSize: 'clamp(2.5rem, 6vw, 5.5rem)', lineHeight: '0.9', letterSpacing: '-0.03em', color: 'var(--foreground)' }}>
                 Angels Peak is a<br/>
-                manifesto of <span style={{ color: 'var(--gray-500)', fontStyle: 'italic' }}>resilience.</span>
+                <span style={{ WebkitTextStroke: '2px var(--foreground)', color: 'transparent' }}>manifesto</span> of <span style={{ color: 'var(--gray-500)', fontStyle: 'italic' }}>resilience.</span>
               </h2>
               
-              <h2 className="fw-black uppercase" style={{ fontSize: 'clamp(2.5rem, 6vw, 5.5rem)', lineHeight: '0.9', letterSpacing: '-0.03em', color: 'var(--foreground)', marginLeft: 'auto', textAlign: 'right', maxWidth: '900px', marginTop: '2rem' }}>
-                Embrace the ascent with a fearless blend of isolation, <span style={{ WebkitTextStroke: '2px var(--foreground)', color: 'transparent' }}>chaos,</span> and minimalist grit.
-              </h2>
+
               
               <h2 className="fw-black uppercase" style={{ fontSize: 'clamp(2.5rem, 6vw, 5.5rem)', lineHeight: '0.9', letterSpacing: '-0.03em', color: 'var(--foreground)', marginTop: '2rem' }}>
                 We reject the valley.<br/>
