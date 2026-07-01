@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import StickyHeader from './components/StickyHeader';
 import CustomCursor from './components/CustomCursor';
+import Preloader from './components/Preloader';
+import AudioToggle from './components/AudioToggle';
 import { CartProvider } from './context/CartContext';
 import './globals.css';
 
@@ -14,7 +16,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body suppressHydrationWarning>
         <CartProvider>
+          <Preloader />
           <CustomCursor />
+          <AudioToggle />
           <div className="noise-overlay"></div>
           <StickyHeader />
           <main style={{ minHeight: '80vh' }}>

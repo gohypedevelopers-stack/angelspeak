@@ -24,8 +24,8 @@ export default async function ProductPage({ params }) {
       <div style={{ paddingTop: '8rem', paddingBottom: '8rem' }}>
         <div className="container">
         <style dangerouslySetInnerHTML={{__html: `
-          .product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; alignItems: start; }
-          .sticky-info { position: sticky; top: 8rem; }
+          .product-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 4rem; align-items: start; }
+          .sticky-info { position: sticky; top: 8rem; padding-right: 1rem; }
           @media (max-width: 768px) {
             .product-grid { grid-template-columns: 1fr; gap: 3rem; }
             .sticky-info { position: static; }
@@ -33,12 +33,26 @@ export default async function ProductPage({ params }) {
         `}} />
         <div className="product-grid">
           
-          <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-            <div style={{ backgroundColor: '#e8e8e8', aspectRatio: '1/1', position: 'relative', overflow: 'hidden' }}>
+          <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+            <div style={{ backgroundColor: 'transparent', position: 'relative', overflow: 'hidden' }}>
               <img 
                 src={product.image} 
-                alt={product.title} 
-                style={{ width: '100%', height: '100%', objectFit: 'contain' }} 
+                alt={`${product.title} 1`} 
+                style={{ width: '100%', height: 'auto', display: 'block' }} 
+              />
+            </div>
+            <div style={{ backgroundColor: 'transparent', position: 'relative', overflow: 'hidden' }}>
+              <img 
+                src={product.image} 
+                alt={`${product.title} 2`} 
+                style={{ width: '100%', height: 'auto', display: 'block', filter: 'brightness(0.9) contrast(1.1)' }} 
+              />
+            </div>
+            <div style={{ backgroundColor: 'transparent', position: 'relative', overflow: 'hidden' }}>
+              <img 
+                src={product.image} 
+                alt={`${product.title} 3`} 
+                style={{ width: '100%', height: 'auto', display: 'block' }} 
               />
             </div>
           </div>
