@@ -18,7 +18,7 @@ export default function ProductCarousel() {
 
   return (
     <section style={{ padding: '6rem 0', backgroundColor: 'var(--background)' }}>
-      <div className="container" style={{ marginBottom: '4rem', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
+      <div className="container" style={{ marginBottom: '4rem', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', maxWidth: '1800px' }}>
         <h2 className="fs-3xl fw-black uppercase">Latest Drops</h2>
         <div style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
           <div style={{ display: 'flex', gap: '0.5rem' }}>
@@ -35,10 +35,10 @@ export default function ProductCarousel() {
         </div>
       </div>
       
-      <div className="container custom-scrollbar" ref={scrollRef} style={{ display: 'flex', gap: '3rem', overflowX: 'auto', paddingBottom: '4rem', scrollSnapType: 'x mandatory' }}>
+      <div className="container custom-scrollbar" ref={scrollRef} style={{ display: 'flex', gap: '1rem', overflowX: 'auto', paddingBottom: '4rem', scrollSnapType: 'x mandatory', maxWidth: '1800px' }}>
         {products.map((product) => (
           <div key={product.id} className="group" style={{ minWidth: '350px', width: '350px', flexShrink: 0, scrollSnapAlign: 'start' }}>
-            <div style={{ aspectRatio: '1/1', backgroundColor: '#e8e8e8', marginBottom: '2rem', overflow: 'hidden', position: 'relative' }}>
+            <div style={{ aspectRatio: '1/1', backgroundColor: '#F0F0F0', borderRadius: '12px', marginBottom: '1rem', overflow: 'hidden', position: 'relative' }}>
               <Link href={`/shop/${product.slug}`} style={{ display: 'block', width: '100%', height: '100%' }}>
                 <img 
                   src={product.image} 
@@ -55,37 +55,50 @@ export default function ProductCarousel() {
                   />
                 )}
               </Link>
-              <div style={{ position: 'absolute', inset: 0, backgroundColor: 'rgba(0,0,0,0.5)', opacity: 0, transition: 'opacity 0.3s ease', display: 'flex', alignItems: 'center', justifyContent: 'center', pointerEvents: 'none' }} className="overlay">
-                <button 
-                  className="btn" 
-                  style={{ padding: '0.8rem 1.5rem', pointerEvents: 'auto', cursor: 'pointer', transform: 'translateY(10px)', transition: 'all 0.3s ease' }}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    addToCart(product);
-                  }}
-                >
-                  ADD TO CART
-                </button>
+              
+              {/* Bookmark Icon */}
+              <button style={{ position: 'absolute', top: '1rem', right: '1rem', background: 'none', border: 'none', color: 'var(--gray-900)', cursor: 'pointer', opacity: 0.7 }} className="hover-scale">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+              </button>
+              
+              {/* Carousel Dots Indicator */}
+              <div style={{ position: 'absolute', bottom: '1rem', left: '50%', transform: 'translateX(-50%)', display: 'flex', gap: '4px' }}>
+                <div style={{ width: '4px', height: '4px', borderRadius: '50%', backgroundColor: 'var(--gray-900)', opacity: 0.8 }}></div>
+                <div style={{ width: '4px', height: '4px', borderRadius: '50%', backgroundColor: 'var(--gray-900)', opacity: 0.3 }}></div>
+                <div style={{ width: '4px', height: '4px', borderRadius: '50%', backgroundColor: 'var(--gray-900)', opacity: 0.3 }}></div>
               </div>
             </div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
-              <span className="fw-bold uppercase fs-base" style={{ letterSpacing: '0.05em' }}>{product.title}</span>
-              <span className="fs-sm" style={{ color: 'var(--gray-400)' }}>{product.price}</span>
+            
+            {/* Minimalist Details Section */}
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', padding: '0 0.5rem' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.2rem' }}>
+                <Link href={`/shop/${product.slug}`} className="fw-bold uppercase fs-sm" style={{ letterSpacing: '0.05em' }}>{product.title}</Link>
+                <span className="fs-xs" style={{ color: 'var(--gray-400)' }}>{product.price}</span>
+              </div>
+              <button 
+                onClick={(e) => {
+                  e.preventDefault();
+                  addToCart(product);
+                }}
+                style={{ 
+                  width: '32px', height: '32px', borderRadius: '50%', border: '1px solid var(--gray-600)', 
+                  background: 'transparent', color: 'var(--foreground)', display: 'flex', alignItems: 'center', 
+                  justifyContent: 'center', cursor: 'pointer', transition: 'all 0.3s ease', flexShrink: 0
+                }} 
+                className="add-btn hover-scale"
+                title="Quick Add to Cart"
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              </button>
             </div>
-            <p className="fs-sm" style={{ color: 'var(--gray-400)', lineHeight: '1.4' }}>{product.chapter}</p>
           </div>
         ))}
       </div>
       <style dangerouslySetInnerHTML={{__html: `
-        .group:hover .overlay { opacity: 1 !important; }
-        .group:hover .overlay .btn { transform: translateY(0) !important; }
-        .group:hover .primary-img { opacity: 0 !important; }
-        .group:hover .hover-img { opacity: 1 !important; transform: scale(1.05); }
+        .add-btn:hover { background-color: var(--foreground) !important; color: var(--background) !important; border-color: var(--foreground) !important; }
         
-        .custom-scrollbar::-webkit-scrollbar { height: 8px; }
-        .custom-scrollbar::-webkit-scrollbar-track { background: var(--gray-900); border-radius: 4px; margin: 0 2rem; }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: var(--gray-500); border-radius: 4px; }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: var(--foreground); }
+        .custom-scrollbar::-webkit-scrollbar { display: none; }
+        .custom-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
       `}} />
     </section>
   );
