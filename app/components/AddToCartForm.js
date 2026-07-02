@@ -5,7 +5,7 @@ import { useCart } from '../context/CartContext';
 export default function AddToCartForm({ product }) {
   const { addToCart } = useCart();
   const [selectedSize, setSelectedSize] = useState('');
-  const sizes = ['S', 'M', 'L', 'XL'];
+  const sizes = ['XS', 'S', 'M', 'L', 'XL'];
 
   const handleAddToCart = () => {
     if (!selectedSize) {
@@ -22,7 +22,7 @@ export default function AddToCartForm({ product }) {
           <span className="fs-sm fw-bold uppercase" style={{ letterSpacing: '0.05em' }}>Size</span>
           <button style={{ background: 'none', border: 'none', textDecoration: 'underline', color: 'var(--gray-400)', cursor: 'pointer', fontSize: '0.75rem', textTransform: 'uppercase' }}>Size Guide</button>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '0.5rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '0.5rem' }}>
           {sizes.map((size) => (
             <button
               key={size}

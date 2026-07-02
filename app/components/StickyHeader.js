@@ -45,7 +45,7 @@ export default function StickyHeader() {
         }}
       >
         <div className="announcement-text" style={{ padding: scrolled ? '0' : '10px 1rem' }}>
-          DROP 1 — BUILT IN CHAOS. 1 AUGUST. 250 PIECES. NO RESTOCK.
+          BUILT IN CHAOS. PREMIUM STREETWEAR.
         </div>
       </div>
       <Navbar />
