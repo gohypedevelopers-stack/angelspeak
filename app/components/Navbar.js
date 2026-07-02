@@ -12,11 +12,11 @@ export default function Navbar() {
 
   return (
     <>
-      <nav style={{ padding: '1rem 0', position: 'relative', overflow: 'hidden' }}>
-        <div className="container" style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', alignItems: 'center', opacity: isSearchOpen ? 0 : 1, transition: 'opacity 0.2s ease', pointerEvents: isSearchOpen ? 'none' : 'auto' }}>
+      <nav style={{ padding: '1.5rem 3rem', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', opacity: isSearchOpen ? 0 : 1, transition: 'opacity 0.2s ease', pointerEvents: isSearchOpen ? 'none' : 'auto', width: '100%', position: 'relative' }}>
           
           {/* Left: Navigation Links & Mobile Menu */}
-          <div style={{ display: 'flex', gap: '2rem', textTransform: 'uppercase', fontSize: '0.875rem', fontWeight: '500', letterSpacing: '0.05em' }}>
+          <div style={{ display: 'flex', gap: '2rem', textTransform: 'uppercase', fontSize: '0.875rem', fontWeight: '500', letterSpacing: '0.05em', flex: 1 }}>
             <div 
               style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer' }} 
               className="hover-scale"
@@ -33,14 +33,14 @@ export default function Navbar() {
           </div>
 
           {/* Center: Brand Logo */}
-          <div style={{ textAlign: 'center', display: 'flex', justifyContent: 'center' }}>
+          <div style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)', textAlign: 'center', display: 'flex', justifyContent: 'center', zIndex: 10 }}>
             <Link href="/" className="hover-scale" style={{ display: 'inline-block' }}>
               <img src="/Angel_peak_name_White.png" alt="Angels Peak" style={{ height: 'clamp(24px, 8vw, 60px)', width: 'auto', objectFit: 'contain' }} />
             </Link>
           </div>
 
           {/* Right: Utility Icons */}
-          <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '1.5rem', alignItems: 'center' }}>
+          <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '1.5rem', alignItems: 'center', flex: 1 }}>
             {/* Search */}
             <button className="hover-scale" style={{ background: 'none', border: 'none', color: 'inherit', cursor: 'pointer', padding: 0 }} onClick={() => setIsSearchOpen(true)}>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
@@ -76,7 +76,7 @@ export default function Navbar() {
           transition: 'transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
           zIndex: 10
         }}>
-          <div className="container" style={{ display: 'flex', alignItems: 'center', width: '100%', gap: '1rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', width: '100%', gap: '1rem' }}>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ color: 'var(--gray-400)' }}><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
             <input 
               type="text" 

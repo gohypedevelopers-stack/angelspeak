@@ -25,21 +25,24 @@ export default function StickyHeader() {
       left: 0, 
       right: 0, 
       zIndex: 100, 
-      backgroundColor: scrolled ? 'var(--background)' : 'transparent',
-      transition: 'background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
-      borderBottom: scrolled ? '1px solid var(--gray-800)' : '1px solid transparent'
+      backgroundColor: scrolled ? 'rgba(0, 0, 0, 0.7)' : 'transparent',
+      backdropFilter: scrolled ? 'blur(16px)' : 'none',
+      WebkitBackdropFilter: scrolled ? 'blur(16px)' : 'none',
+      transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
+      borderBottom: scrolled ? '1px solid rgba(255,255,255,0.1)' : '1px solid transparent'
     }}>
       <div 
         className="announcement-bar fs-xs fw-bold text-center uppercase" 
         style={{ 
-          backgroundColor: 'var(--foreground)', 
-          color: 'var(--background)', 
-          padding: scrolled ? '0' : '8px 0', 
-          letterSpacing: '0.05em',
+          backgroundColor: 'transparent', 
+          color: 'var(--foreground)', 
+          padding: scrolled ? '0' : '10px 0', 
+          letterSpacing: '0.1em',
           height: scrolled ? '0px' : 'auto',
           opacity: scrolled ? 0 : 1,
           overflow: 'hidden',
-          transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)'
+          transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
+          borderBottom: scrolled ? 'none' : '1px solid rgba(255,255,255,0.1)'
         }}
       >
         DROP 1 — BUILT IN CHAOS. 1 AUGUST. 250 PIECES. NO RESTOCK.
