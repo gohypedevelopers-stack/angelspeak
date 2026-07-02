@@ -34,9 +34,8 @@ export default function StickyHeader() {
       <div 
         className="announcement-bar fs-xs fw-bold text-center uppercase" 
         style={{ 
-          backgroundColor: 'transparent', 
-          color: 'var(--foreground)', 
-          padding: scrolled ? '0' : '10px 0', 
+          backgroundColor: 'var(--foreground)', 
+          color: 'var(--background)', 
           letterSpacing: '0.1em',
           height: scrolled ? '0px' : 'auto',
           opacity: scrolled ? 0 : 1,
@@ -45,7 +44,9 @@ export default function StickyHeader() {
           borderBottom: scrolled ? 'none' : '1px solid rgba(255,255,255,0.1)'
         }}
       >
-        DROP 1 — BUILT IN CHAOS. 1 AUGUST. 250 PIECES. NO RESTOCK.
+        <div className="announcement-text" style={{ padding: scrolled ? '0' : '10px 1rem' }}>
+          DROP 1 — BUILT IN CHAOS. 1 AUGUST. 250 PIECES. NO RESTOCK.
+        </div>
       </div>
       <Navbar />
     </div>

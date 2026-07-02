@@ -75,7 +75,7 @@ export default function Home() {
               
               {/* Massive Image Container */}
               <div className="editorial-img-container" style={{ width: '80%', height: '100%', position: 'absolute', left: 0, top: 0, bottom: 0, borderRadius: '24px', overflow: 'hidden', backgroundColor: '#e5e5e5' }}>
-                <img src="/product1.jpg" alt="The Ascent Tee Detail" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', filter: 'contrast(1.05)' }} />
+                <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?q=80&w=1400&auto=format&fit=crop" alt="The Ascent Tee Detail" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', filter: 'grayscale(50%) contrast(1.1) brightness(0.8)' }} />
                 <div style={{ position: 'absolute', top: '2rem', left: '2rem', backgroundColor: 'var(--accent)', color: 'var(--foreground)', padding: '0.5rem 1rem', fontWeight: '900', fontSize: '0.75rem', letterSpacing: '0.1em', borderRadius: '4px' }}>
                   FLAGSHIP 01
                 </div>

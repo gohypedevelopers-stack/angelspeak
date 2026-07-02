@@ -12,7 +12,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav style={{ padding: '1.5rem 3rem', position: 'relative', overflow: 'hidden' }}>
+      <nav className="main-nav" style={{ position: 'relative', overflow: 'hidden' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', opacity: isSearchOpen ? 0 : 1, transition: 'opacity 0.2s ease', pointerEvents: isSearchOpen ? 'none' : 'auto', width: '100%', position: 'relative' }}>
           
           {/* Left: Navigation Links & Mobile Menu */}
@@ -35,7 +35,7 @@ export default function Navbar() {
           {/* Center: Brand Logo */}
           <div style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)', textAlign: 'center', display: 'flex', justifyContent: 'center', zIndex: 10 }}>
             <Link href="/" className="hover-scale" style={{ display: 'inline-block' }}>
-              <img src="/Angel_peak_name_White.png" alt="Angels Peak" style={{ height: 'clamp(24px, 8vw, 60px)', width: 'auto', objectFit: 'contain' }} />
+              <img src="/Angel_peak_name_White.png" alt="Angels Peak" className="logo-img" style={{ height: 'clamp(24px, 8vw, 60px)', width: 'auto', objectFit: 'contain' }} />
             </Link>
           </div>
 
@@ -91,8 +91,11 @@ export default function Navbar() {
         </div>
 
         <style dangerouslySetInnerHTML={{__html: `
+          .main-nav { padding: 1.5rem 3rem; }
           @media (max-width: 768px) {
             .desktop-only { display: none !important; }
+            .main-nav { padding: 1rem 1.5rem !important; }
+            .logo-img { height: 28px !important; }
           }
         `}} />
       </nav>
