@@ -49,12 +49,12 @@ export const products = [
   },
   {
     id: "ap5",
-    title: "Division 01 — No Return",
-    chapter: "The summit / the point of no return.",
+    title: "Division 01 — Built In Chaos",
+    chapter: "The summit / the point of realization.",
     price: "₹4,000",
     image: "/product5.jpg",
     hoverImage: "/product6.jpg",
-    description: "Past the point you turn back. Final Form carries 'Division 01 — No Return' under full wings — the chapter where the climb commits to you as much as you commit to it. Oversized 260gsm French terry, the heaviest statement in the line.",
+    description: "Past the point you turn back. Final Form carries 'Division 01 — Built In Chaos' under full wings — the chapter where the climb commits to you as much as you commit to it. Oversized 260gsm French terry, the heaviest statement in the line.",
     fabric: "260gsm French terry · oversized, dropped-shoulder fit · screen + rubber/puff print. The model is wearing size L.",
     scarcity: "Limited to 250 across the drop — roughly 25 per colourway. No restock.",
     slug: "division-01-no-return"

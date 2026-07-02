@@ -46,9 +46,12 @@ export default function Preloader() {
           animation: flicker 1.5s ease-in-out forwards;
         }
       `}} />
-      <h1 className="fs-xl fw-black uppercase preloader-text" style={{ color: 'var(--foreground)', letterSpacing: '0.3em', textAlign: 'center', padding: '0 1rem' }}>
-        DIVISION 01 — NO RETURN
-      </h1>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2rem' }}>
+        <img src="/Angel_peak_logo_White.png" alt="Angels Peak" className="preloader-text" style={{ height: '80px', objectFit: 'contain' }} />
+        <h1 className="fs-xl fw-black uppercase preloader-text" style={{ color: 'var(--foreground)', letterSpacing: '0.3em', textAlign: 'center', padding: '0 1rem' }}>
+          A BRAND BUILT IN CHAOS
+        </h1>
+      </div>
     </div>
   );
 }

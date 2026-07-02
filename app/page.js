@@ -39,7 +39,7 @@ export default function Home() {
           <span>//</span>
           <span>BUILT IN CHAOS</span>
           <span>//</span>
-          <span>DIVISION 01 — NO RETURN</span>
+          <span>A BRAND BUILT IN CHAOS</span>
           <span>//</span>
           <span>THE ANGEL HAS YOUR BACK</span>
           <span>//</span>
@@ -47,7 +47,7 @@ export default function Home() {
           <span>//</span>
           <span>BUILT IN CHAOS</span>
           <span>//</span>
-          <span>DIVISION 01 — NO RETURN</span>
+          <span>A BRAND BUILT IN CHAOS</span>
           <span>//</span>
           <span>THE ANGEL HAS YOUR BACK</span>
           <span>//</span>
