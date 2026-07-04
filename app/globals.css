@@ -20,9 +20,6 @@
   padding: 0;
 }
 
-html, body {
-  overflow-x: hidden;
-}
 
 body {
   background-color: var(--background);
@@ -45,7 +42,7 @@ a:hover {
 
 /* Utilities */
 .container {
-  max-width: 1440px;
+  max-width: 1800px;
   margin: 0 auto;
   padding: 0 2rem;
 }

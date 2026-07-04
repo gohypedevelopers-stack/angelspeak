@@ -61,6 +61,20 @@ export default function AboutUs() {
               Every drop advances the story. People don't buy one tee — they collect chapters.<br/>
               Wear your ascent.
             </p>
+
+            <div style={{ marginTop: '6rem', paddingTop: '4rem', borderTop: '1px solid var(--gray-800)' }}>
+              <h2 className="fs-xl fw-bold uppercase" style={{ color: 'var(--foreground)', marginBottom: '2rem', letterSpacing: '0.05em' }}>
+                Brand Information
+              </h2>
+              <p style={{ marginBottom: '1.5rem', color: 'var(--gray-400)' }}>
+                [BRAND_DESCRIPTION]
+              </p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', color: 'var(--gray-400)' }}>
+                <p><strong>Email:</strong> [EMAIL]</p>
+                <p><strong>Phone:</strong> [PHONE_NUMBER]</p>
+                <p><strong>Address:</strong> [ADDRESS]</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

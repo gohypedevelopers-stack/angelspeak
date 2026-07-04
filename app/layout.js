@@ -40,15 +40,20 @@ export default function RootLayout({ children }) {
                 </div>
                 <div className="footer-links">
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                    <Link href="/about-us">About Us</Link>
-                    <Link href="/shop">The Drops</Link>
-                    <Link href="/">Join the Climb</Link>
+                    <Link href="/shop" style={{ color: 'var(--gray-400)' }}>[CATEGORY_1]</Link>
+                    <Link href="/shop" style={{ color: 'var(--gray-400)' }}>[CATEGORY_2]</Link>
+                    <Link href="/shop">All Drops</Link>
                   </div>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', color: 'var(--gray-400)' }}>
-                    <Link href="/shop/the-ascent-tee">Size & Fit</Link>
-                    <Link href="/shop/the-ascent-tee">Exchanges</Link>
-                    <Link href="/world">FAQ</Link>
-                    <Link href="mailto:support@angelspeak.com">Contact</Link>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                    <Link href="/about-us">About Us</Link>
+                    <Link href="/privacy-policy">Privacy Policy</Link>
+                    <Link href="/refund-policy">Refund Policy</Link>
+                    <Link href="/terms-conditions">Terms & Conditions</Link>
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', color: 'var(--gray-400)', textTransform: 'none' }}>
+                    <span>Email: [EMAIL]</span>
+                    <span>Phone: [PHONE_NUMBER]</span>
+                    <span style={{ maxWidth: '200px' }}>Address: [ADDRESS]</span>
                   </div>
                 </div>
               </div>

@@ -37,21 +37,21 @@ export default function ProductCarousel() {
       
       <div className="container custom-scrollbar" ref={scrollRef} style={{ display: 'flex', gap: '1rem', overflowX: 'auto', paddingBottom: '4rem', scrollSnapType: 'x mandatory', maxWidth: '1800px' }}>
         {products.map((product) => (
-          <div key={product.id} className="group" style={{ minWidth: '350px', width: '350px', flexShrink: 0, scrollSnapAlign: 'start' }}>
-            <div style={{ aspectRatio: '1/1', backgroundColor: '#F0F0F0', borderRadius: '12px', marginBottom: '1rem', overflow: 'hidden', position: 'relative' }}>
+          <div key={product.id} className="group" style={{ minWidth: '400px', width: '400px', flexShrink: 0, scrollSnapAlign: 'start' }}>
+            <div style={{ aspectRatio: '4/5', backgroundColor: '#F0F0F0', borderRadius: '12px', marginBottom: '1rem', overflow: 'hidden', position: 'relative' }}>
               <Link href={`/shop/${product.slug}`} style={{ display: 'block', width: '100%', height: '100%' }}>
                 <img 
                   src={product.image} 
                   alt={product.title} 
                   className="primary-img"
-                  style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'contain', transition: 'opacity 0.4s ease' }} 
+                  style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', transition: 'opacity 0.4s ease' }} 
                 />
                 {product.hoverImage && (
                   <img 
                     src={product.hoverImage} 
                     alt={`${product.title} Alternate`} 
                     className="hover-img"
-                    style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'contain', opacity: 0, transition: 'all 0.5s cubic-bezier(0.16, 1, 0.3, 1)' }} 
+                    style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0, transition: 'all 0.5s cubic-bezier(0.16, 1, 0.3, 1)' }} 
                   />
                 )}
               </Link>

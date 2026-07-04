@@ -22,20 +22,20 @@ export default function ProductGrid() {
         }}>
           {gridProducts.map((product) => (
             <div key={product.id} className="group" style={{ display: 'flex', flexDirection: 'column' }}>
-              <div style={{ aspectRatio: '1/1', backgroundColor: '#F0F0F0', borderRadius: '12px', marginBottom: '1rem', overflow: 'hidden', position: 'relative', width: '100%' }}>
+              <div style={{ aspectRatio: '4/5', backgroundColor: '#F0F0F0', borderRadius: '12px', marginBottom: '1rem', overflow: 'hidden', position: 'relative', width: '100%' }}>
                 <Link href={`/shop/${product.slug}`} style={{ display: 'block', width: '100%', height: '100%' }}>
                   <img 
                     src={product.image} 
                     alt={product.title} 
                     className="primary-img"
-                    style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'contain', transition: 'opacity 0.4s ease' }} 
+                    style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', transition: 'opacity 0.4s ease' }} 
                   />
                   {product.hoverImage && (
                     <img 
                       src={product.hoverImage} 
                       alt={`${product.title} Alternate`} 
                       className="hover-img"
-                      style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'contain', opacity: 0, transition: 'all 0.5s cubic-bezier(0.16, 1, 0.3, 1)' }} 
+                      style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0, transition: 'all 0.5s cubic-bezier(0.16, 1, 0.3, 1)' }} 
                     />
                   )}
                 </Link>
