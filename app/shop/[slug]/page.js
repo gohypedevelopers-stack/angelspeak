@@ -30,7 +30,7 @@ export default async function ProductPage({ params }) {
           .sticky-info { position: sticky; top: 8rem; padding-right: 1rem; }
           @media (max-width: 768px) {
             .product-grid { grid-template-columns: 1fr; gap: 3rem; }
-            .sticky-info { position: static; }
+            .sticky-info { position: static !important; padding-left: 0 !important; }
           }
         `}} />
         <div className="product-grid">

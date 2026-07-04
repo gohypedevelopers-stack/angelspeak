@@ -53,34 +53,52 @@ export default function ProductGallery({ product }) {
   }, []);
 
   return (
-    <div ref={containerRef} style={{ height: '250vh', position: 'relative' }}>
-      <div style={{ position: 'sticky', top: '8rem', display: 'grid', gridTemplateColumns: '2.05fr 1fr', gap: '1rem', alignItems: 'start' }}>
+    <>
+      <style dangerouslySetInnerHTML={{__html: `
+        .gallery-container { height: 250vh; position: relative; }
+        .gallery-sticky { position: sticky; top: 8rem; display: grid; grid-template-columns: 2.05fr 1fr; gap: 1rem; align-items: start; }
+        .small-images-mask { position: relative; width: 100%; aspect-ratio: 1 / 2.05; border-radius: 12px; overflow: hidden; }
+        .small-images-track { display: flex; flex-direction: column; gap: 1rem; transition: transform 0.1s ease-out; }
+        .small-image-item { position: relative; width: 100%; aspect-ratio: 1/1; border-radius: 12px; overflow: hidden; background-color: #F0F0F0; flex-shrink: 0; }
         
-        {/* Big Image (Perfect Square) */}
-        <div style={{ position: 'relative', width: '100%', aspectRatio: '1/1', borderRadius: '12px', overflow: 'hidden', backgroundColor: '#F0F0F0' }}>
-          <img 
-            src={product.image} 
-            alt={`${product.title} Main`} 
-            style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} 
-          />
-        </div>
-
-        {/* Small Images Mask (Perfectly fits 2 squares) */}
-        <div ref={maskRef} style={{ position: 'relative', width: '100%', aspectRatio: '1 / 2.05', borderRadius: '12px', overflow: 'hidden' }}>
-          <div ref={trackRef} style={{ display: 'flex', flexDirection: 'column', gap: '1rem', transform: `translateY(-${translateY}px)`, transition: 'transform 0.1s ease-out' }}>
-            {images.map((img, i) => (
-              <div key={i} style={{ position: 'relative', width: '100%', aspectRatio: '1/1', borderRadius: '12px', overflow: 'hidden', backgroundColor: '#F0F0F0', flexShrink: 0 }}>
-                <img 
-                  src={img} 
-                  alt={`${product.title} Detail ${i + 1}`} 
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} 
-                />
-              </div>
-            ))}
+        @media (max-width: 768px) {
+          .gallery-container { height: auto !important; }
+          .gallery-sticky { position: static !important; display: flex !important; flex-direction: column !important; gap: 1rem !important; }
+          .small-images-mask { aspect-ratio: auto !important; overflow: visible !important; }
+          .small-images-track { flex-direction: row !important; overflow-x: auto !important; scroll-snap-type: x mandatory; padding-bottom: 0.5rem; transform: none !important; }
+          .small-images-track::-webkit-scrollbar { display: none; }
+          .small-image-item { width: 85% !important; scroll-snap-align: center; }
+        }
+      `}} />
+      <div ref={containerRef} className="gallery-container">
+        <div className="gallery-sticky">
+          
+          {/* Big Image (Perfect Square) */}
+          <div style={{ position: 'relative', width: '100%', aspectRatio: '1/1', borderRadius: '12px', overflow: 'hidden', backgroundColor: '#F0F0F0' }}>
+            <img 
+              src={product.image} 
+              alt={`${product.title} Main`} 
+              style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }} 
+            />
           </div>
-        </div>
 
+          {/* Small Images Mask */}
+          <div ref={maskRef} className="small-images-mask">
+            <div ref={trackRef} className="small-images-track" style={{ transform: `translateY(-${translateY}px)` }}>
+              {images.map((img, i) => (
+                <div key={i} className="small-image-item">
+                  <img 
+                    src={img} 
+                    alt={`${product.title} Detail ${i + 1}`} 
+                    style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }} 
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+
+        </div>
       </div>
-    </div>
+    </>
   );
 }
