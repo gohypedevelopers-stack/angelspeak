@@ -8,7 +8,7 @@ export default function ProductGallery({ product }) {
   const trackRef = useRef(null);
   const maskRef = useRef(null);
   const [translateY, setTranslateY] = useState(0);
-  const [selectedImage, setSelectedImage] = useState(null); // Lightbox state
+  const [selectedIndex, setSelectedIndex] = useState(null); // Lightbox state
 
   const images = product.images && product.images.length > 0 
     ? product.images 
@@ -27,24 +27,15 @@ export default function ProductGallery({ product }) {
       const maskHeight = maskRef.current.offsetHeight;
       const trackHeight = trackRef.current.offsetHeight;
       
-      // The sticky element is at top: 8rem (128px)
       const offsetTop = 128;
-      
-      // Calculate how far we have scrolled past the sticky point
       const scrolledPast = offsetTop - containerRect.top;
-      
-      // The sticky container is the first child
       const stickyChild = containerRef.current.firstElementChild;
       const stickyChildHeight = stickyChild ? stickyChild.offsetHeight : 0;
-      
-      // The total scrollable distance for the sticky effect is the container height minus the sticky child's height
       const totalScrollable = containerRef.current.offsetHeight - stickyChildHeight;
       
       if (scrolledPast > 0 && totalScrollable > 0) {
         let progress = scrolledPast / totalScrollable;
         progress = Math.max(0, Math.min(1, progress));
-        
-        // Max distance the track can translate
         const maxTranslate = trackHeight - maskHeight;
         setTranslateY(progress * maxTranslate);
       } else if (scrolledPast <= 0) {
@@ -57,15 +48,35 @@ export default function ProductGallery({ product }) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Prevent background scrolling when lightbox is open
+  // Prevent background scrolling and add keyboard nav when lightbox is open
   useEffect(() => {
-    if (selectedImage) {
+    if (selectedIndex !== null) {
       document.body.style.overflow = 'hidden';
+      
+      const handleKeyDown = (e) => {
+        if (e.key === 'ArrowLeft') setSelectedIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+        if (e.key === 'ArrowRight') setSelectedIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+        if (e.key === 'Escape') setSelectedIndex(null);
+      };
+      window.addEventListener('keydown', handleKeyDown);
+      return () => {
+        document.body.style.overflow = 'auto';
+        window.removeEventListener('keydown', handleKeyDown);
+      };
     } else {
       document.body.style.overflow = 'auto';
     }
-    return () => { document.body.style.overflow = 'auto'; };
-  }, [selectedImage]);
+  }, [selectedIndex, images.length]);
+
+  const handleNext = (e) => {
+    e.stopPropagation();
+    setSelectedIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+  };
+
+  const handlePrev = (e) => {
+    e.stopPropagation();
+    setSelectedIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+  };
 
   return (
     <>
@@ -90,7 +101,10 @@ export default function ProductGallery({ product }) {
         <div className="gallery-sticky">
           
           {/* Big Image (Perfect Square) */}
-          <div className="big-image-item" onClick={() => setSelectedImage(product.image)}>
+          <div className="big-image-item" onClick={() => {
+            const idx = images.indexOf(product.image);
+            setSelectedIndex(idx !== -1 ? idx : 0);
+          }}>
             <Image 
               src={product.image} 
               alt={`${product.title} Main`} 
@@ -105,7 +119,7 @@ export default function ProductGallery({ product }) {
           <div ref={maskRef} className="small-images-mask">
             <div ref={trackRef} className="small-images-track" style={{ transform: `translateY(-${translateY}px)` }}>
               {images.map((img, i) => (
-                <div key={i} className="small-image-item" onClick={() => setSelectedImage(img)}>
+                <div key={i} className="small-image-item" onClick={() => setSelectedIndex(i)}>
                   <Image 
                     src={img} 
                     alt={`${product.title} Detail ${i + 1}`} 
@@ -122,37 +136,80 @@ export default function ProductGallery({ product }) {
       </div>
 
       {/* Lightbox / Fullscreen Modal */}
-      {selectedImage && (
+      {selectedIndex !== null && (
         <div 
           style={{ 
             position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', 
-            backgroundColor: 'rgba(0,0,0,0.9)', zIndex: 99999, display: 'flex', 
+            backgroundColor: 'rgba(0,0,0,0.95)', zIndex: 99999, display: 'flex', 
             justifyContent: 'center', alignItems: 'center', cursor: 'zoom-out',
-            backdropFilter: 'blur(5px)', WebkitBackdropFilter: 'blur(5px)'
+            backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)'
           }}
-          onClick={() => setSelectedImage(null)}
+          onClick={() => setSelectedIndex(null)}
         >
+          {/* Close Button */}
           <button 
             style={{ 
               position: 'absolute', top: '2rem', right: '2rem', background: 'rgba(255,255,255,0.1)', 
               border: 'none', color: 'white', cursor: 'pointer', zIndex: 100000, 
-              width: '40px', height: '40px', borderRadius: '50%', display: 'flex', 
-              justifyContent: 'center', alignItems: 'center'
+              width: '44px', height: '44px', borderRadius: '50%', display: 'flex', 
+              justifyContent: 'center', alignItems: 'center', transition: 'background 0.2s'
             }} 
-            onClick={() => setSelectedImage(null)}
+            onClick={() => setSelectedIndex(null)}
+            onMouseOver={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.2)'}
+            onMouseOut={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.1)'}
           >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
           </button>
           
-          <div style={{ position: 'relative', width: '95%', height: '95%' }}>
+          {/* Prev Button */}
+          <button 
+            style={{ 
+              position: 'absolute', left: '2rem', top: '50%', transform: 'translateY(-50%)',
+              background: 'rgba(255,255,255,0.1)', border: 'none', color: 'white', 
+              cursor: 'pointer', zIndex: 100000, width: '56px', height: '56px', 
+              borderRadius: '50%', display: 'flex', justifyContent: 'center', alignItems: 'center',
+              transition: 'background 0.2s'
+            }} 
+            onClick={handlePrev}
+            onMouseOver={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.2)'}
+            onMouseOut={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.1)'}
+          >
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          </button>
+
+          {/* Next Button */}
+          <button 
+            style={{ 
+              position: 'absolute', right: '2rem', top: '50%', transform: 'translateY(-50%)',
+              background: 'rgba(255,255,255,0.1)', border: 'none', color: 'white', 
+              cursor: 'pointer', zIndex: 100000, width: '56px', height: '56px', 
+              borderRadius: '50%', display: 'flex', justifyContent: 'center', alignItems: 'center',
+              transition: 'background 0.2s'
+            }} 
+            onClick={handleNext}
+            onMouseOver={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.2)'}
+            onMouseOut={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.1)'}
+          >
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
+
+          <div style={{ position: 'relative', width: '90%', height: '90%' }}>
             <Image 
-              src={selectedImage} 
+              src={images[selectedIndex]} 
               alt="Enlarged view" 
               fill 
               style={{ objectFit: 'contain' }} 
               sizes="100vw" 
               priority
             />
+          </div>
+          
+          {/* Image Counter */}
+          <div style={{
+            position: 'absolute', bottom: '2rem', left: '50%', transform: 'translateX(-50%)',
+            color: 'rgba(255,255,255,0.6)', fontSize: '0.9rem', letterSpacing: '0.1em'
+          }}>
+            {selectedIndex + 1} / {images.length}
           </div>
         </div>
       )}
