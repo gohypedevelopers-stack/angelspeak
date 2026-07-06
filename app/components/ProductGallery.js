@@ -8,6 +8,7 @@ export default function ProductGallery({ product }) {
   const trackRef = useRef(null);
   const maskRef = useRef(null);
   const [translateY, setTranslateY] = useState(0);
+  const [selectedImage, setSelectedImage] = useState(null); // Lightbox state
 
   const images = product.images && product.images.length > 0 
     ? product.images 
@@ -56,6 +57,16 @@ export default function ProductGallery({ product }) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Prevent background scrolling when lightbox is open
+  useEffect(() => {
+    if (selectedImage) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+    return () => { document.body.style.overflow = 'auto'; };
+  }, [selectedImage]);
+
   return (
     <>
       <style dangerouslySetInnerHTML={{__html: `
@@ -63,7 +74,8 @@ export default function ProductGallery({ product }) {
         .gallery-sticky { position: sticky; top: 8rem; display: grid; grid-template-columns: 2.05fr 1fr; gap: 1rem; align-items: start; }
         .small-images-mask { position: relative; width: 100%; aspect-ratio: 1 / 2.05; border-radius: 12px; overflow: hidden; }
         .small-images-track { display: flex; flex-direction: column; gap: 1rem; transition: transform 0.1s ease-out; }
-        .small-image-item { position: relative; width: 100%; aspect-ratio: 1/1; border-radius: 12px; overflow: hidden; background-color: #F0F0F0; flex-shrink: 0; }
+        .small-image-item { position: relative; width: 100%; aspect-ratio: 1/1; border-radius: 12px; overflow: hidden; background-color: #F0F0F0; flex-shrink: 0; cursor: zoom-in; }
+        .big-image-item { position: relative; width: 100%; aspect-ratio: 1/1; border-radius: 12px; overflow: hidden; background-color: #F0F0F0; cursor: zoom-in; }
         
         @media (max-width: 768px) {
           .gallery-container { height: auto !important; }
@@ -78,7 +90,7 @@ export default function ProductGallery({ product }) {
         <div className="gallery-sticky">
           
           {/* Big Image (Perfect Square) */}
-          <div style={{ position: 'relative', width: '100%', aspectRatio: '1/1', borderRadius: '12px', overflow: 'hidden', backgroundColor: '#F0F0F0' }}>
+          <div className="big-image-item" onClick={() => setSelectedImage(product.image)}>
             <Image 
               src={product.image} 
               alt={`${product.title} Main`} 
@@ -93,7 +105,7 @@ export default function ProductGallery({ product }) {
           <div ref={maskRef} className="small-images-mask">
             <div ref={trackRef} className="small-images-track" style={{ transform: `translateY(-${translateY}px)` }}>
               {images.map((img, i) => (
-                <div key={i} className="small-image-item">
+                <div key={i} className="small-image-item" onClick={() => setSelectedImage(img)}>
                   <Image 
                     src={img} 
                     alt={`${product.title} Detail ${i + 1}`} 
@@ -108,6 +120,42 @@ export default function ProductGallery({ product }) {
 
         </div>
       </div>
+
+      {/* Lightbox / Fullscreen Modal */}
+      {selectedImage && (
+        <div 
+          style={{ 
+            position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', 
+            backgroundColor: 'rgba(0,0,0,0.9)', zIndex: 99999, display: 'flex', 
+            justifyContent: 'center', alignItems: 'center', cursor: 'zoom-out',
+            backdropFilter: 'blur(5px)', WebkitBackdropFilter: 'blur(5px)'
+          }}
+          onClick={() => setSelectedImage(null)}
+        >
+          <button 
+            style={{ 
+              position: 'absolute', top: '2rem', right: '2rem', background: 'rgba(255,255,255,0.1)', 
+              border: 'none', color: 'white', cursor: 'pointer', zIndex: 100000, 
+              width: '40px', height: '40px', borderRadius: '50%', display: 'flex', 
+              justifyContent: 'center', alignItems: 'center'
+            }} 
+            onClick={() => setSelectedImage(null)}
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </button>
+          
+          <div style={{ position: 'relative', width: '95%', height: '95%' }}>
+            <Image 
+              src={selectedImage} 
+              alt="Enlarged view" 
+              fill 
+              style={{ objectFit: 'contain' }} 
+              sizes="100vw" 
+              priority
+            />
+          </div>
+        </div>
+      )}
     </>
   );
 }
