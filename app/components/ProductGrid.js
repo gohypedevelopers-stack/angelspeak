@@ -4,11 +4,13 @@ import Link from 'next/link';
 import { products } from '../../data/products';
 import { useCart } from '../context/CartContext';
 
+import Image from 'next/image';
+
 export default function ProductGrid() {
   const { addToCart } = useCart();
   
-  // Take only the first 8 products for this section
-  const gridProducts = products.slice(0, 8);
+  // Take all products for this section
+  const gridProducts = products;
 
   return (
     <section style={{ padding: '6rem 0', backgroundColor: 'var(--background)' }}>
@@ -23,19 +25,23 @@ export default function ProductGrid() {
           {gridProducts.map((product) => (
             <div key={product.id} className="group" style={{ display: 'flex', flexDirection: 'column' }}>
               <div style={{ aspectRatio: '4/5', backgroundColor: '#F0F0F0', borderRadius: '12px', marginBottom: '1rem', overflow: 'hidden', position: 'relative', width: '100%' }}>
-                <Link href={`/shop/${product.slug}`} style={{ display: 'block', width: '100%', height: '100%' }}>
-                  <img 
+                <Link href={`/shop/${product.slug}`} className="no-hover" style={{ display: 'block', width: '100%', height: '100%' }}>
+                  <Image 
                     src={product.image} 
                     alt={product.title} 
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="primary-img"
-                    style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', transition: 'opacity 0.4s ease' }} 
+                    style={{ objectFit: 'cover', transition: 'opacity 0.4s ease' }} 
                   />
                   {product.hoverImage && (
-                    <img 
+                    <Image 
                       src={product.hoverImage} 
                       alt={`${product.title} Alternate`} 
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       className="hover-img"
-                      style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0, transition: 'all 0.5s cubic-bezier(0.16, 1, 0.3, 1)' }} 
+                      style={{ objectFit: 'cover', opacity: 0, transition: 'all 0.5s cubic-bezier(0.16, 1, 0.3, 1)' }} 
                     />
                   )}
                 </Link>

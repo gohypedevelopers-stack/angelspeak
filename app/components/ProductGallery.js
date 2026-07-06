@@ -1,18 +1,22 @@
 'use client';
 import { useRef, useEffect, useState } from 'react';
 
+import Image from 'next/image';
+
 export default function ProductGallery({ product }) {
   const containerRef = useRef(null);
   const trackRef = useRef(null);
   const maskRef = useRef(null);
   const [translateY, setTranslateY] = useState(0);
 
-  const images = [
-    product.hoverImage || product.image,
-    product.image,
-    product.hoverImage || product.image,
-    product.image
-  ];
+  const images = product.images && product.images.length > 0 
+    ? product.images 
+    : [
+        product.hoverImage || product.image,
+        product.image,
+        product.hoverImage || product.image,
+        product.image
+      ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -75,10 +79,13 @@ export default function ProductGallery({ product }) {
           
           {/* Big Image (Perfect Square) */}
           <div style={{ position: 'relative', width: '100%', aspectRatio: '1/1', borderRadius: '12px', overflow: 'hidden', backgroundColor: '#F0F0F0' }}>
-            <img 
+            <Image 
               src={product.image} 
               alt={`${product.title} Main`} 
-              style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }} 
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              priority
+              style={{ objectFit: 'cover' }} 
             />
           </div>
 
@@ -87,10 +94,12 @@ export default function ProductGallery({ product }) {
             <div ref={trackRef} className="small-images-track" style={{ transform: `translateY(-${translateY}px)` }}>
               {images.map((img, i) => (
                 <div key={i} className="small-image-item">
-                  <img 
+                  <Image 
                     src={img} 
                     alt={`${product.title} Detail ${i + 1}`} 
-                    style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }} 
+                    fill
+                    sizes="(max-width: 768px) 85vw, 25vw"
+                    style={{ objectFit: 'cover' }} 
                   />
                 </div>
               ))}

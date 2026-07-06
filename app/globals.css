@@ -40,6 +40,10 @@ a:hover {
   opacity: 0.7;
 }
 
+a.no-hover:hover {
+  opacity: 1 !important;
+}
+
 /* Utilities */
 .container {
   max-width: 1800px;
