@@ -57,7 +57,7 @@ export default function ProductCarousel() {
                     fill
                     sizes="400px"
                     className="hover-img"
-                    style={{ objectFit: 'cover', opacity: 0, transition: 'all 0.5s cubic-bezier(0.16, 1, 0.3, 1)' }} 
+                    style={{ objectFit: 'cover', transition: 'all 0.5s cubic-bezier(0.16, 1, 0.3, 1)' }} 
                   />
                 )}
               </Link>

@@ -64,7 +64,7 @@ export default function Shop() {
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       className="hover-img"
-                      style={{ objectFit: 'cover', opacity: 0, transition: 'opacity 0.6s ease, transform 1s ease' }} 
+                      style={{ objectFit: 'cover', transition: 'opacity 0.6s ease, transform 1s ease' }} 
                     />
                   )}
                 </Link>

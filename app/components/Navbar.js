@@ -28,8 +28,7 @@ export default function Navbar() {
             </div>
             <div style={{ display: 'flex', gap: '2rem' }} className="desktop-only">
               <Link href="/shop" className="hover-scale">SHOP</Link>
-              <Link href="/shop" className="hover-scale" style={{ color: 'var(--gray-400)' }}>[CATEGORY_1]</Link>
-              <Link href="/shop" className="hover-scale" style={{ color: 'var(--gray-400)' }}>[CATEGORY_2]</Link>
+
               <Link href="/about-us" className="hover-scale">ABOUT US</Link>
             </div>
           </div>
@@ -129,8 +128,7 @@ export default function Navbar() {
         <div style={{ padding: '4rem 2rem', display: 'flex', flexDirection: 'column', gap: '1.5rem', fontSize: '1.5rem', fontWeight: '600', textTransform: 'uppercase' }}>
           <Link href="/" onClick={() => setIsMenuOpen(false)} className="hover-scale" style={{ transformOrigin: 'left' }}>Home</Link>
           <Link href="/shop" onClick={() => setIsMenuOpen(false)} className="hover-scale" style={{ transformOrigin: 'left' }}>The Drops</Link>
-          <Link href="/shop" onClick={() => setIsMenuOpen(false)} className="hover-scale" style={{ transformOrigin: 'left', color: 'var(--gray-400)' }}>[CATEGORY_1]</Link>
-          <Link href="/shop" onClick={() => setIsMenuOpen(false)} className="hover-scale" style={{ transformOrigin: 'left', color: 'var(--gray-400)' }}>[CATEGORY_2]</Link>
+
           <Link href="/about-us" onClick={() => setIsMenuOpen(false)} className="hover-scale" style={{ transformOrigin: 'left' }}>About Us</Link>
         </div>
       </div>

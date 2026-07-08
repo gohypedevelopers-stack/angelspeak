@@ -5,7 +5,7 @@ export default function RefundPolicy() {
         <h1 className="fs-3xl fw-black uppercase" style={{ marginBottom: '2rem' }}>Refund Policy</h1>
         <div style={{ color: 'var(--gray-400)', lineHeight: '1.8', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
           <p>
-            We have a 30-day return policy, which means you have 30 days after receiving your item to request a return.
+            We have a 7-day return policy, which means you have 7 days after receiving your item to request a return.
           </p>
           
           <h2 className="fs-xl fw-bold uppercase" style={{ color: 'var(--foreground)', marginTop: '2rem' }}>Eligibility</h2>
