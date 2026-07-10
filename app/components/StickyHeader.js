@@ -24,13 +24,19 @@ export default function StickyHeader() {
       top: 0, 
       left: 0, 
       right: 0, 
-      zIndex: 100, 
-      backgroundColor: scrolled ? 'rgba(0, 0, 0, 0.7)' : 'transparent',
-      backdropFilter: scrolled ? 'blur(16px)' : 'none',
-      WebkitBackdropFilter: scrolled ? 'blur(16px)' : 'none',
-      transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
-      borderBottom: scrolled ? '1px solid rgba(255,255,255,0.1)' : '1px solid transparent'
+      zIndex: 100
     }}>
+      {/* Background layer to avoid breaking position: fixed for child portals/sidebars */}
+      <div style={{
+        position: 'absolute',
+        inset: 0,
+        backgroundColor: scrolled ? 'rgba(0, 0, 0, 0.7)' : 'transparent',
+        backdropFilter: scrolled ? 'blur(16px)' : 'none',
+        WebkitBackdropFilter: scrolled ? 'blur(16px)' : 'none',
+        transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
+        borderBottom: scrolled ? '1px solid rgba(255,255,255,0.1)' : '1px solid transparent',
+        zIndex: -1
+      }}></div>
       <div 
         className="announcement-bar fs-xs fw-bold text-center uppercase" 
         style={{ 
