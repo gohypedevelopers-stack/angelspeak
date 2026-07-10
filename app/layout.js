@@ -3,6 +3,7 @@ import StickyHeader from './components/StickyHeader';
 import CustomCursor from './components/CustomCursor';
 import Preloader from './components/Preloader';
 import AudioToggle from './components/AudioToggle';
+import CartDrawer from './components/CartDrawer';
 import { CartProvider } from './context/CartContext';
 import './globals.css';
 
@@ -21,6 +22,7 @@ export default function RootLayout({ children }) {
           <AudioToggle />
           <div className="noise-overlay"></div>
           <StickyHeader />
+          <CartDrawer />
           <main style={{ minHeight: '80vh' }}>
             {children}
           </main>

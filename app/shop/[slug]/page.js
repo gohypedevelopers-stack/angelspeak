@@ -1,25 +1,52 @@
 import Link from 'next/link';
-import { products } from '../../../data/products';
 import { notFound } from 'next/navigation';
 import AddToCartForm from '../../components/AddToCartForm';
 import ProductCarousel from '../../components/ProductCarousel';
 import ProductTabs from '../../components/ProductTabs';
 import ProductGallery from '../../components/ProductGallery';
 import PromoBanner from '../../components/PromoBanner';
+import { shopifyFetch, getProducts } from '../../lib/shopify';
 
 export async function generateStaticParams() {
-  return products.map((product) => ({
-    slug: product.slug,
+  const rawProducts = await getProducts();
+  return rawProducts.map((edge) => ({
+    slug: edge.node.handle,
   }));
 }
 
 export default async function ProductPage({ params }) {
   const { slug } = await params;
-  const product = products.find((p) => p.slug === slug);
+  
+  const query = `
+    query ProductByHandle($handle: String!) {
+      product(handle: $handle) {
+        id
+        title
+        handle
+        descriptionHtml
+        priceRange {
+          minVariantPrice { amount }
+        }
+        images(first: 10) {
+          edges { node { url altText } }
+        }
+        variants(first: 10) {
+          edges { node { id title } }
+        }
+      }
+    }
+  `;
+  
+  const res = await shopifyFetch({ query, variables: { handle: slug } });
+  const product = res.body?.data?.product;
 
   if (!product) {
     notFound();
   }
+  
+  const price = parseFloat(product.priceRange?.minVariantPrice?.amount || 0).toLocaleString('en-IN');
+  const rawProducts = await getProducts();
+  const allProducts = rawProducts.map(edge => edge.node);
 
   return (
     <>
@@ -43,7 +70,7 @@ export default async function ProductPage({ params }) {
                 {product.title}
               </h1>
               <p style={{ fontSize: '1.125rem', color: 'var(--gray-200)', fontWeight: '500' }}>
-                {product.price}
+                ₹{price}
               </p>
             </div>
 
@@ -51,20 +78,20 @@ export default async function ProductPage({ params }) {
               <AddToCartForm product={product} />
             </div>
 
-            <ProductTabs description={product.description} fabric={product.fabric} />
+            <ProductTabs description={product.descriptionHtml || 'No description available.'} fabric="100% Premium Material. Crafted for comfort and durability." />
             
           </div>
         </div>
       </div>
     </div>
     <div style={{ borderTop: '1px solid var(--gray-800)', paddingTop: '2rem' }}>
-      <ProductCarousel />
+      <ProductCarousel products={allProducts.slice(0, 8)} />
     </div>
     <div style={{ borderTop: '1px solid var(--gray-800)', borderBottom: '1px solid var(--gray-800)' }}>
       <PromoBanner />
     </div>
     <div style={{ paddingTop: '2rem' }}>
-      <ProductCarousel />
+      <ProductCarousel products={allProducts.slice(0, 8)} />
     </div>
     </>
   );

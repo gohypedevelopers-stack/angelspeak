@@ -1,11 +1,13 @@
 import Link from 'next/link';
-import { products } from '../data/products';
 import ProductCarousel from './components/ProductCarousel';
 import PromoBanner from './components/PromoBanner';
 import ProductGrid from './components/ProductGrid';
 import ScrollReveal from './components/ScrollReveal';
+import { getProducts } from './lib/shopify';
 
-export default function Home() {
+export default async function Home() {
+  const rawProducts = await getProducts();
+  const products = rawProducts.map(edge => edge.node);
   return (
     <>
       {/* 1. CINEMATIC HERO SECTION */}
@@ -59,13 +61,13 @@ export default function Home() {
 
 
       {/* 4. HORIZONTAL DROPS CAROUSEL */}
-      <ProductCarousel />
+      <ProductCarousel products={products.slice(0, 8)} />
 
       {/* NEW: PROMO BANNER */}
       <PromoBanner />
 
       {/* NEW: 4.5 ALL PIECES GRID */}
-      <ProductGrid />
+      <ProductGrid products={products} />
 
       {/* 5. DROP HIGHLIGHT (EDITORIAL SPOTLIGHT) */}
       <section style={{ backgroundColor: 'var(--background)', padding: '6rem 0', position: 'relative', overflow: 'hidden' }}>

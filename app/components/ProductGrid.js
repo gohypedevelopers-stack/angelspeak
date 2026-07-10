@@ -1,15 +1,11 @@
 'use client';
 
 import Link from 'next/link';
-import { products } from '../../data/products';
 import { useCart } from '../context/CartContext';
-
 import Image from 'next/image';
 
-export default function ProductGrid() {
+export default function ProductGrid({ products = [] }) {
   const { addToCart } = useCart();
-  
-  // Take all products for this section
   const gridProducts = products;
 
   return (
@@ -22,21 +18,24 @@ export default function ProductGrid() {
           gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', 
           gap: '2rem 1.5rem' 
         }}>
-          {gridProducts.map((product) => (
+          {gridProducts.map((product) => {
+            const variantId = product.variants?.edges?.[0]?.node?.id || product.id;
+            const price = parseFloat(product.priceRange?.minVariantPrice?.amount || 0).toLocaleString('en-IN');
+            return (
             <div key={product.id} className="group" style={{ display: 'flex', flexDirection: 'column' }}>
               <div style={{ aspectRatio: '4/5', backgroundColor: '#F0F0F0', borderRadius: '12px', marginBottom: '1rem', overflow: 'hidden', position: 'relative', width: '100%' }}>
-                <Link href={`/shop/${product.slug}`} className="no-hover" style={{ display: 'block', width: '100%', height: '100%' }}>
+                <Link href={`/shop/${product.handle}`} className="no-hover" style={{ display: 'block', width: '100%', height: '100%' }}>
                   <Image 
-                    src={product.image} 
+                    src={product.images?.edges?.[0]?.node?.url || '/placeholder.png'} 
                     alt={product.title} 
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="primary-img"
                     style={{ objectFit: 'cover', transition: 'opacity 0.4s ease' }} 
                   />
-                  {product.hoverImage && (
+                  {product.images?.edges?.[1]?.node?.url && (
                     <Image 
-                      src={product.hoverImage} 
+                      src={product.images.edges[1].node.url} 
                       alt={`${product.title} Alternate`} 
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -62,13 +61,18 @@ export default function ProductGrid() {
               {/* Minimalist Details Section */}
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', padding: '0 0.5rem' }}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.2rem' }}>
-                  <Link href={`/shop/${product.slug}`} className="fw-bold uppercase fs-sm" style={{ letterSpacing: '0.05em' }}>{product.title}</Link>
-                  <span className="fs-xs" style={{ color: 'var(--gray-400)' }}>{product.price}</span>
+                  <Link href={`/shop/${product.handle}`} className="fw-bold uppercase fs-sm" style={{ letterSpacing: '0.05em' }}>{product.title}</Link>
+                  <span className="fs-xs" style={{ color: 'var(--gray-400)' }}>₹{price}</span>
                 </div>
                 <button 
                   onClick={(e) => {
                     e.preventDefault();
-                    addToCart(product);
+                    addToCart({
+                      id: variantId,
+                      title: product.title,
+                      price: product.priceRange.minVariantPrice.amount,
+                      image: product.images?.edges?.[0]?.node?.url
+                    });
                   }}
                   style={{ 
                     width: '32px', height: '32px', borderRadius: '50%', border: '1px solid var(--gray-600)', 
@@ -82,7 +86,7 @@ export default function ProductGrid() {
                 </button>
               </div>
             </div>
-          ))}
+          )})}
         </div>
       </div>
       <style dangerouslySetInnerHTML={{__html: `

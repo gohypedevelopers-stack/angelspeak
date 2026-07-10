@@ -6,14 +6,27 @@ export default function AddToCartForm({ product }) {
   const { addToCart } = useCart();
   const [selectedSize, setSelectedSize] = useState('');
   const [showSizeGuide, setShowSizeGuide] = useState(false);
+  const [showError, setShowError] = useState(false);
   const sizes = ['XS', 'S', 'M', 'L', 'XL'];
 
-  const handleAddToCart = () => {
+  const handleAddToCart = async (redirect = false) => {
     if (!selectedSize) {
-      alert('Please select a size first.');
+      setShowError(true);
+      setTimeout(() => setShowError(false), 3000);
       return;
     }
-    addToCart({ ...product, selectedSize });
+    const variantId = product.variants?.edges?.[0]?.node?.id || product.id;
+    const url = await addToCart({
+      id: variantId,
+      title: product.title,
+      price: product.priceRange?.minVariantPrice?.amount,
+      image: product.images?.edges?.[0]?.node?.url || '/placeholder.png',
+      selectedSize
+    });
+
+    if (redirect && url) {
+      window.location.href = url;
+    }
   };
 
   return (
@@ -59,19 +72,14 @@ export default function AddToCartForm({ product }) {
         <button 
           className="hover-opacity" 
           style={{ padding: '1.25rem', fontSize: '0.875rem', cursor: 'pointer', fontWeight: '600', letterSpacing: '0.05em', backgroundColor: 'transparent', color: 'var(--foreground)', border: '1px solid var(--gray-600)', borderRadius: '30px', textTransform: 'uppercase', transition: 'all 0.2s ease' }}
-          onClick={handleAddToCart}
+          onClick={() => handleAddToCart()}
         >
           Add to Bag
         </button>
         <button 
           className="hover-opacity" 
           style={{ padding: '1.25rem', fontSize: '0.875rem', cursor: 'pointer', fontWeight: '600', letterSpacing: '0.05em', backgroundColor: 'var(--foreground)', color: 'var(--background)', border: '1px solid var(--foreground)', borderRadius: '30px', textTransform: 'uppercase', transition: 'all 0.2s ease' }}
-          onClick={() => {
-            handleAddToCart();
-            if (selectedSize) {
-              window.location.href = '/checkout';
-            }
-          }}
+          onClick={() => handleAddToCart(true)}
         >
           Buy Now
         </button>
@@ -129,6 +137,28 @@ export default function AddToCartForm({ product }) {
           </div>
         </div>
       )}
+
+      {/* Custom Error Toast */}
+      {showError && (
+        <div style={{
+          position: 'fixed', top: '2rem', left: '50%', transform: 'translateX(-50%)',
+          backgroundColor: 'var(--foreground)', color: 'var(--background)',
+          padding: '1rem 2rem', borderRadius: '30px', fontWeight: 'bold', fontSize: '0.875rem',
+          textTransform: 'uppercase', letterSpacing: '0.05em', zIndex: 100000,
+          boxShadow: '0 10px 30px rgba(0,0,0,0.5)',
+          animation: 'toastSlideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
+          display: 'flex', alignItems: 'center', gap: '0.5rem'
+        }}>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+          Please select a size first.
+        </div>
+      )}
+      <style dangerouslySetInnerHTML={{__html: `
+        @keyframes toastSlideDown {
+          0% { transform: translate(-50%, -100%); opacity: 0; }
+          100% { transform: translate(-50%, 0); opacity: 1; }
+        }
+      `}} />
     </div>
   );
 }

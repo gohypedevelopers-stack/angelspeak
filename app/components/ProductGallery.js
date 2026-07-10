@@ -10,14 +10,8 @@ export default function ProductGallery({ product }) {
   const [translateY, setTranslateY] = useState(0);
   const [selectedIndex, setSelectedIndex] = useState(null); // Lightbox state
 
-  const images = product.images && product.images.length > 0 
-    ? product.images 
-    : [
-        product.hoverImage || product.image,
-        product.image,
-        product.hoverImage || product.image,
-        product.image
-      ];
+  const images = product.images?.edges?.map(e => e.node.url) || [];
+  const mainImage = images[0] || '/placeholder.png';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -102,11 +96,11 @@ export default function ProductGallery({ product }) {
           
           {/* Big Image (Perfect Square) */}
           <div className="big-image-item" onClick={() => {
-            const idx = images.indexOf(product.image);
+            const idx = images.indexOf(mainImage);
             setSelectedIndex(idx !== -1 ? idx : 0);
           }}>
             <Image 
-              src={product.image} 
+              src={mainImage} 
               alt={`${product.title} Main`} 
               fill
               sizes="(max-width: 768px) 100vw, 50vw"
