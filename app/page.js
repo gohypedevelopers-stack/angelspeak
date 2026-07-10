@@ -5,6 +5,8 @@ import ProductGrid from './components/ProductGrid';
 import ScrollReveal from './components/ScrollReveal';
 import { getProducts } from './lib/shopify';
 
+export const dynamic = 'force-dynamic';
+
 export default async function Home() {
   const rawProducts = await getProducts();
   const products = rawProducts.map(edge => edge.node);

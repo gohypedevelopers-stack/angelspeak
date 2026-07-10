@@ -63,7 +63,21 @@ export function CartProvider({ children }) {
       });
 
       // Update Shopify Cart
-      const updatedCart = await shopifyAddToCart(currentCartId, product.id, 1);
+      let updatedCart;
+      try {
+        updatedCart = await shopifyAddToCart(currentCartId, product.id, 1);
+        if (!updatedCart) throw new Error('Cart not found');
+      } catch (err) {
+        console.warn('Cart expired or invalid, creating a new one...');
+        const newCart = await createCart();
+        currentCartId = newCart.id;
+        currentCheckoutUrl = newCart.checkoutUrl;
+        setShopifyCartId(newCart.id);
+        setCheckoutUrl(newCart.checkoutUrl);
+        localStorage.setItem('shopifyCartId', newCart.id);
+        localStorage.setItem('shopifyCheckoutUrl', newCart.checkoutUrl);
+        updatedCart = await shopifyAddToCart(currentCartId, product.id, 1);
+      }
       
       // Sync line item IDs from Shopify so we can update/remove them later
       if (updatedCart && updatedCart.lines) {

@@ -52,9 +52,9 @@ export default function RootLayout({ children }) {
                     <Link href="/terms-conditions">Terms & Conditions</Link>
                   </div>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', color: 'var(--gray-400)', textTransform: 'none' }}>
-                    <span>Email: [EMAIL]</span>
-                    <span>Phone: [PHONE_NUMBER]</span>
-                    <span style={{ maxWidth: '200px' }}>Address: [ADDRESS]</span>
+                    <span>Email: theangelspeak@gmail.com</span>
+                    <span>Phone: 8393900007</span>
+                    <span style={{ maxWidth: '300px' }}>Address: Janta Tyre Retreading Works, Khanna Farm, Teenpani, Haldwani, Uttarakhand 263139</span>
                   </div>
                 </div>
               </div>

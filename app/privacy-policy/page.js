@@ -20,10 +20,10 @@ export default function PrivacyPolicy() {
 
           <h2 className="fs-xl fw-bold uppercase" style={{ color: 'var(--foreground)', marginTop: '2rem' }}>Contact Us</h2>
           <p>
-            For more information about our privacy practices, if you have questions, or if you would like to make a complaint, please contact us by e-mail at [EMAIL] or by mail using the details provided below:
+            For more information about our privacy practices, if you have questions, or if you would like to make a complaint, please contact us by e-mail at theangelspeak@gmail.com or by mail using the details provided below:
           </p>
           <p>
-            [ADDRESS]
+            Janta Tyre Retreading Works, Khanna Farm, Teenpani, Haldwani, Uttarakhand 263139
           </p>
         </div>
       </div>

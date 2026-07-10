@@ -24,7 +24,7 @@ export default function RefundPolicy() {
           </p>
 
           <p style={{ marginTop: '2rem' }}>
-            For all return inquiries, contact us at [EMAIL].
+            For all return inquiries, contact us at theangelspeak@gmail.com.
           </p>
         </div>
       </div>

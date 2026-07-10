@@ -7,12 +7,8 @@ import ProductGallery from '../../components/ProductGallery';
 import PromoBanner from '../../components/PromoBanner';
 import { shopifyFetch, getProducts } from '../../lib/shopify';
 
-export async function generateStaticParams() {
-  const rawProducts = await getProducts();
-  return rawProducts.map((edge) => ({
-    slug: edge.node.handle,
-  }));
-}
+export const dynamic = 'force-dynamic';
+
 
 export default async function ProductPage({ params }) {
   const { slug } = await params;
