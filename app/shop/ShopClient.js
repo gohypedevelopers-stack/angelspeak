@@ -91,8 +91,9 @@ export default function ShopClient({ collections, allProducts }) {
 
   const renderSection = (title, items) => {
     if (!items || items.length === 0) return null;
+    const sectionId = title ? title.toLowerCase().replace(' ', '-') : 'all-pieces';
     return (
-      <div style={{ marginBottom: '6rem' }}>
+      <div id={sectionId} style={{ marginBottom: '6rem', scrollMarginTop: '10rem' }}>
         {title && (
           <h2 className="fs-2xl fw-black uppercase" style={{ 
             marginBottom: '2rem', letterSpacing: '0.05em', 

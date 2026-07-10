@@ -42,8 +42,11 @@ export default function RootLayout({ children }) {
                 </div>
                 <div className="footer-links">
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-
                     <Link href="/shop">All Drops</Link>
+                    <Link href="/shop#exile-mode">Exile Mode</Link>
+                    <Link href="/shop#peak-state">Peak State</Link>
+                    <Link href="/shop#fallen-division">Fallen Division</Link>
+                    <Link href="/shop#final-form">Final Form</Link>
                   </div>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                     <Link href="/about-us">About Us</Link>
