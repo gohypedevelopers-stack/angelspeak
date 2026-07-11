@@ -23,6 +23,9 @@ export default async function ProductPage({ params }) {
         priceRange {
           minVariantPrice { amount }
         }
+        fabric: metafield(namespace: "custom", key: "fabric") { value }
+        washcare: metafield(namespace: "custom", key: "washcare") { value }
+        shipping: metafield(namespace: "custom", key: "shipping") { value }
         images(first: 10) {
           edges { node { url altText } }
         }
@@ -74,7 +77,12 @@ export default async function ProductPage({ params }) {
               <AddToCartForm product={product} />
             </div>
 
-            <ProductTabs description={product.descriptionHtml || 'No description available.'} fabric="100% Premium Material. Crafted for comfort and durability." />
+            <ProductTabs 
+              description={product.descriptionHtml || 'No description available.'} 
+              fabric={product.fabric?.value || "100% Premium Material. Crafted for comfort and durability."} 
+              washcare={product.washcare?.value}
+              shipping={product.shipping?.value}
+            />
             
           </div>
         </div>
