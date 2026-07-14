@@ -1,7 +1,7 @@
 'use client';
 
 export default function WhatsAppButton() {
-  const phoneNumber = '918393900007'; // +91 prefix for India
+  const phoneNumber = '918393915555'; // +91 prefix for India
   const message = 'Hello Angels Peak! I need some help.';
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
