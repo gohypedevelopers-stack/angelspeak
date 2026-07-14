@@ -67,12 +67,12 @@ export default function AboutUs() {
                 Brand Information
               </h2>
               <p style={{ marginBottom: '1.5rem', color: 'var(--gray-400)' }}>
-                [BRAND_DESCRIPTION]
+                Angels Peak is for the ones climbing. Built in chaos, tested in isolation, fallen and risen — every piece is a channel between you and the force pulling you toward your peak. Wear your ascent.
               </p>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', color: 'var(--gray-400)' }}>
-                <p><strong>Email:</strong> [EMAIL]</p>
-                <p><strong>Phone:</strong> [PHONE_NUMBER]</p>
-                <p><strong>Address:</strong> [ADDRESS]</p>
+                <p><strong>Email:</strong> theangelspeak@gmail.com</p>
+                <p><strong>Phone:</strong> 8393900007</p>
+                <p><strong>Address:</strong> Janta Tyre Retreading Works, Khanna Farm, Teenpani, Haldwani, Uttarakhand 263139</p>
               </div>
             </div>
           </div>

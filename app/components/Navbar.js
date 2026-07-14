@@ -228,16 +228,23 @@ export default function Navbar() {
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
           </button>
         </div>
-        <div className="no-scrollbar" style={{ padding: '4rem 2rem', display: 'flex', flexDirection: 'column', gap: '1.5rem', fontSize: '1.5rem', fontWeight: '600', textTransform: 'uppercase', overflowY: 'auto' }}>
+        <div className="no-scrollbar" style={{ padding: '3rem 2rem', display: 'flex', flexDirection: 'column', gap: '1.25rem', fontSize: '1.25rem', fontWeight: '600', textTransform: 'uppercase', overflowY: 'auto' }}>
           <Link href="/" onClick={() => setIsMenuOpen(false)} className="hover-scale" style={{ transformOrigin: 'left' }}>Home</Link>
           <Link href="/shop" onClick={() => setIsMenuOpen(false)} className="hover-scale" style={{ transformOrigin: 'left' }}>All Drops</Link>
-          <Link href="/shop#exile-mode" onClick={() => setIsMenuOpen(false)} className="hover-scale" style={{ transformOrigin: 'left', fontSize: '1.2rem', color: 'var(--gray-400)' }}>- Exile Mode</Link>
-          <Link href="/shop#peak-state" onClick={() => setIsMenuOpen(false)} className="hover-scale" style={{ transformOrigin: 'left', fontSize: '1.2rem', color: 'var(--gray-400)' }}>- Peak State</Link>
-          <Link href="/shop#fallen-division" onClick={() => setIsMenuOpen(false)} className="hover-scale" style={{ transformOrigin: 'left', fontSize: '1.2rem', color: 'var(--gray-400)' }}>- Fallen Division</Link>
-          <Link href="/shop#final-form" onClick={() => setIsMenuOpen(false)} className="hover-scale" style={{ transformOrigin: 'left', fontSize: '1.2rem', color: 'var(--gray-400)' }}>- Final Form</Link>
-
-          <Link href="/about-us" onClick={() => setIsMenuOpen(false)} className="hover-scale" style={{ transformOrigin: 'left', marginTop: '1rem' }}>About Us</Link>
-          <a href="https://51q8ch-m3.myshopify.com/account/login" onClick={() => setIsMenuOpen(false)} className="hover-scale" style={{ transformOrigin: 'left', marginTop: '1rem', borderTop: '1px solid var(--gray-800)', paddingTop: '1.5rem', textDecoration: 'none' }}>Log In / Register</a>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', paddingLeft: '1rem', marginBottom: '0.5rem' }}>
+            <Link href="/shop#exile-mode" onClick={() => setIsMenuOpen(false)} className="hover-scale" style={{ transformOrigin: 'left', fontSize: '1rem', color: 'var(--gray-400)' }}>- Exile Mode</Link>
+            <Link href="/shop#peak-state" onClick={() => setIsMenuOpen(false)} className="hover-scale" style={{ transformOrigin: 'left', fontSize: '1rem', color: 'var(--gray-400)' }}>- Peak State</Link>
+            <Link href="/shop#fallen-division" onClick={() => setIsMenuOpen(false)} className="hover-scale" style={{ transformOrigin: 'left', fontSize: '1rem', color: 'var(--gray-400)' }}>- Fallen Division</Link>
+            <Link href="/shop#final-form" onClick={() => setIsMenuOpen(false)} className="hover-scale" style={{ transformOrigin: 'left', fontSize: '1rem', color: 'var(--gray-400)' }}>- Final Form</Link>
+          </div>
+          <Link href="/about-us" onClick={() => setIsMenuOpen(false)} className="hover-scale" style={{ transformOrigin: 'left' }}>About Us</Link>
+          <a href="https://51q8ch-m3.myshopify.com/account/login" onClick={() => setIsMenuOpen(false)} className="hover-scale" style={{ transformOrigin: 'left', marginTop: '0.5rem', borderTop: '1px solid var(--gray-800)', paddingTop: '1.5rem', textDecoration: 'none' }}>Log In / Register</a>
+          <div style={{ marginTop: '2rem', paddingTop: '1.5rem', borderTop: '1px solid var(--gray-800)', display: 'flex', flexDirection: 'column', gap: '0.8rem', fontSize: '0.75rem', color: 'var(--gray-400)', textTransform: 'none', fontWeight: 'normal' }}>
+            <strong>Contact Us</strong>
+            <span>Email: theangelspeak@gmail.com</span>
+            <span>Phone: 8393900007</span>
+            <span>Address: Janta Tyre Retreading Works, Khanna Farm, Teenpani, Haldwani, Uttarakhand 263139</span>
+          </div>
         </div>
       </div>
       </div>
