@@ -204,3 +204,47 @@ export async function removeFromCart(cartId, lineIds) {
   const response = await shopifyFetch({ query, variables, cache: 'no-store' });
   return response.body?.data?.cartLinesRemove?.cart;
 }
+
+export async function subscribeToWaitlist(contact) {
+  const isEmail = contact.includes('@');
+  const randomPassword = Math.random().toString(36).slice(-12) + "A1!"; 
+  
+  const input = {
+    acceptsMarketing: true,
+    password: randomPassword
+  };
+
+  if (isEmail) {
+    input.email = contact;
+  } else {
+    let phone = contact.replace(/\D/g, '');
+    if (phone.length === 10) {
+      phone = '+91' + phone;
+    } else if (!phone.startsWith('+')) {
+      phone = '+' + phone;
+    }
+    input.phone = phone;
+    // Shopify Storefront API strictly requires an email for customer creation.
+    // We will generate a placeholder email for phone-only signups.
+    input.email = `${phone.replace('+', '')}@waitlist.angelspeak.com`;
+  }
+
+  const query = `
+    mutation customerCreate($input: CustomerCreateInput!) {
+      customerCreate(input: $input) {
+        customer {
+          id
+        }
+        customerUserErrors {
+          code
+          field
+          message
+        }
+      }
+    }
+  `;
+
+  const variables = { input };
+  const response = await shopifyFetch({ query, variables, cache: 'no-store' });
+  return response.body?.data?.customerCreate;
+}

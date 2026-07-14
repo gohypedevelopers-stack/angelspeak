@@ -5,6 +5,8 @@ import ProductGrid from './components/ProductGrid';
 import ScrollReveal from './components/ScrollReveal';
 import { getProducts } from './lib/shopify';
 
+import WaitlistForm from './components/WaitlistForm';
+
 export const dynamic = 'force-dynamic';
 
 export default async function Home() {
@@ -344,16 +346,7 @@ export default async function Home() {
           <p className="fs-base fw-bold uppercase" style={{ color: 'var(--gray-800)', marginBottom: '3rem', letterSpacing: '0.05em' }}>
             Built in Chaos drops soon. The waitlist climbs first. Leave your number. We'll open the door before anyone else.
           </p>
-          <form style={{ display: 'flex', gap: '1rem', maxWidth: '500px', margin: '0 auto', flexDirection: 'column' }}>
-            <input 
-              type="text" 
-              placeholder="Enter your email or WhatsApp..." 
-              style={{ padding: '1.2rem', fontSize: '1rem', border: '2px solid var(--background)', backgroundColor: 'transparent', color: 'var(--background)', outline: 'none', width: '100%', fontWeight: '500' }} 
-            />
-            <button className="btn btn-full" style={{ backgroundColor: 'var(--background)', color: 'var(--foreground)', padding: '1.2rem', fontSize: '1rem', border: 'none' }}>
-              JOIN THE CLIMB
-            </button>
-          </form>
+          <WaitlistForm />
         </div>
       </section>
 

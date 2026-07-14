@@ -3,6 +3,7 @@ import StickyHeader from './components/StickyHeader';
 import CustomCursor from './components/CustomCursor';
 import Preloader from './components/Preloader';
 import CartDrawer from './components/CartDrawer';
+import WhatsAppButton from './components/WhatsAppButton';
 import { CartProvider } from './context/CartContext';
 import './globals.css';
 
@@ -21,6 +22,7 @@ export default function RootLayout({ children }) {
           <div className="noise-overlay"></div>
           <StickyHeader />
           <CartDrawer />
+          <WhatsAppButton />
           <main style={{ minHeight: '80vh' }}>
             {children}
           </main>
