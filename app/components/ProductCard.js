@@ -8,6 +8,7 @@ import { useCart } from '../context/CartContext';
 export default function ProductCard({ product }) {
   const { addToCart } = useCart();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
   
   const images = product.images?.edges?.map(edge => edge.node.url) || ['/placeholder.png'];
   const variantId = product.variants?.edges?.[0]?.node?.id || product.id;
@@ -23,9 +24,15 @@ export default function ProductCard({ product }) {
     setCurrentImageIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
   };
 
+  const activeIndex = isHovered && currentImageIndex === 0 && images.length > 1 ? 1 : currentImageIndex;
+
   return (
     <div className="group product-card-container" style={{ display: 'flex', flexDirection: 'column' }}>
-      <div style={{ aspectRatio: '4/5', backgroundColor: '#F0F0F0', borderRadius: '12px', marginBottom: '1rem', overflow: 'hidden', position: 'relative', width: '100%' }}>
+      <div 
+        style={{ aspectRatio: '4/5', backgroundColor: '#F0F0F0', borderRadius: '12px', marginBottom: '1rem', overflow: 'hidden', position: 'relative', width: '100%' }}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
         <Link href={`/shop/${product.handle}`} style={{ display: 'block', width: '100%', height: '100%' }}>
           {images.map((url, idx) => (
             <Image 
@@ -36,9 +43,9 @@ export default function ProductCard({ product }) {
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               style={{ 
                 objectFit: 'cover', 
-                opacity: currentImageIndex === idx ? 1 : 0,
+                opacity: activeIndex === idx ? 1 : 0,
                 transition: 'opacity 0.4s ease',
-                pointerEvents: currentImageIndex === idx ? 'auto' : 'none'
+                pointerEvents: activeIndex === idx ? 'auto' : 'none'
               }} 
             />
           ))}
@@ -88,7 +95,7 @@ export default function ProductCard({ product }) {
                 style={{ 
                   width: '4px', height: '4px', borderRadius: '50%', 
                   backgroundColor: 'var(--gray-900)', 
-                  opacity: currentImageIndex === idx ? 0.8 : 0.3,
+                  opacity: activeIndex === idx ? 0.8 : 0.3,
                   transition: 'opacity 0.3s'
                 }}
               ></div>

@@ -50,7 +50,7 @@ export async function getCollections() {
                       currencyCode
                     }
                   }
-                  images(first: 2) {
+                  images(first: 10) {
                     edges {
                       node {
                         url
@@ -94,7 +94,7 @@ export async function getProducts() {
                 currencyCode
               }
             }
-            images(first: 2) {
+            images(first: 10) {
               edges {
                 node {
                   url
