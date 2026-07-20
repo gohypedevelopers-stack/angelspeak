@@ -164,9 +164,9 @@ export default function Navbar() {
             </div>
 
             {/* Account */}
-            <a href="https://51q8ch-m3.myshopify.com/account/login" className="hover-scale desktop-only" style={{ background: 'none', border: 'none', color: 'inherit', cursor: 'pointer', padding: 0, display: 'flex', alignItems: 'center', gap: '0.5rem', textDecoration: 'none' }}>
+            <a href="https://account.angelspeak.in/account/login" className="hover-scale desktop-only" style={{ background: 'none', border: 'none', color: 'inherit', cursor: 'pointer', padding: 0, display: 'flex', alignItems: 'center', gap: '0.5rem', textDecoration: 'none' }}>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-              <span style={{ fontSize: '0.875rem', fontWeight: '500', textTransform: 'uppercase', letterSpacing: '0.05em' }}>LOG IN</span>
+              <span style={{ fontSize: '0.875rem', fontWeight: '500', textTransform: 'uppercase', letterSpacing: '0.05em' }}>ACCOUNT</span>
             </a>
             {/* Cart */}
             <button 
@@ -238,7 +238,7 @@ export default function Navbar() {
             <Link href="/shop#final-form" onClick={() => setIsMenuOpen(false)} className="hover-scale" style={{ transformOrigin: 'left', fontSize: '1rem', color: 'var(--gray-400)' }}>- Final Form</Link>
           </div>
           <Link href="/about-us" onClick={() => setIsMenuOpen(false)} className="hover-scale" style={{ transformOrigin: 'left' }}>About Us</Link>
-          <a href="https://51q8ch-m3.myshopify.com/account/login" onClick={() => setIsMenuOpen(false)} className="hover-scale" style={{ transformOrigin: 'left', marginTop: '0.5rem', borderTop: '1px solid var(--gray-800)', paddingTop: '1.5rem', textDecoration: 'none' }}>Log In / Register</a>
+          <a href="https://account.angelspeak.in/account/login" onClick={() => setIsMenuOpen(false)} className="hover-scale" style={{ transformOrigin: 'left', marginTop: '0.5rem', borderTop: '1px solid var(--gray-800)', paddingTop: '1.5rem', textDecoration: 'none' }}>Account</a>
           <div style={{ marginTop: '2rem', paddingTop: '1.5rem', borderTop: '1px solid var(--gray-800)', display: 'flex', flexDirection: 'column', gap: '0.8rem', fontSize: '0.75rem', color: 'var(--gray-400)', textTransform: 'none', fontWeight: 'normal' }}>
             <strong>Contact Us</strong>
             <span>Email: theangelspeak@gmail.com</span>
