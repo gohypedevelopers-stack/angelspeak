@@ -1,4 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap');
+@font-face {
+  font-family: 'nits-UIText-Regular';
+  src: url('/fonts/nits-UIText-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 
 :root {
   --background: #000000;
@@ -11,13 +17,15 @@
   --gray-200: #e0e0e0;
   --accent: #d4d4d4;
   
-  --font-primary: 'Inter', sans-serif;
+  --font-primary: 'nits-UIText-Regular', sans-serif;
 }
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: 'nits-UIText-Regular', sans-serif !important;
+  font-weight: 400 !important;
 }
 
 
@@ -26,8 +34,14 @@ body {
   color: var(--foreground);
   font-family: var(--font-primary);
   line-height: 1.5;
+  letter-spacing: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Keep bold only on headings */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600 !important;
 }
 
 a {
@@ -97,9 +111,9 @@ a.no-hover:hover {
   background-color: var(--foreground);
   color: var(--background);
   padding: 1rem 2rem;
-  font-weight: 700;
+  font-weight: 400;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
   border: 1px solid var(--foreground);
   cursor: pointer;
   transition: all 0.3s ease;
