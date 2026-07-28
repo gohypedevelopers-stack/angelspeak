@@ -75,7 +75,7 @@ export default function ProductGallery({ product }) {
   return (
     <>
       <style dangerouslySetInnerHTML={{__html: `
-        .gallery-container { height: 250vh; position: relative; }
+        .gallery-container { height: 150vh; position: relative; }
         .gallery-sticky { position: sticky; top: 8rem; display: grid; grid-template-columns: 2.05fr 1fr; gap: 1rem; align-items: start; }
         .small-images-mask { position: relative; width: 100%; aspect-ratio: 1 / 2.05; border-radius: 12px; overflow: hidden; }
         .small-images-track { display: flex; flex-direction: column; gap: 1rem; transition: transform 0.1s ease-out; }
