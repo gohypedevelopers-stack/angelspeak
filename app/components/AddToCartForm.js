@@ -87,7 +87,7 @@ export default function AddToCartForm({ product }) {
 
       {showSizeGuide && (
         <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', backgroundColor: 'rgba(0,0,0,0.8)', zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center', backdropFilter: 'blur(5px)' }} onClick={() => setShowSizeGuide(false)}>
-          <div style={{ backgroundColor: 'var(--background)', border: '1px solid var(--gray-800)', borderRadius: '16px', padding: '3rem', width: '90%', maxWidth: '500px', position: 'relative' }} onClick={e => e.stopPropagation()}>
+          <div style={{ backgroundColor: 'var(--background)', border: '1px solid var(--gray-800)', borderRadius: '16px', padding: '3rem', width: 'fit-content', maxWidth: '95vw', position: 'relative' }} onClick={e => e.stopPropagation()}>
             <button 
               onClick={() => setShowSizeGuide(false)}
               style={{ position: 'absolute', top: '1.5rem', right: '1.5rem', background: 'none', border: 'none', color: 'var(--foreground)', cursor: 'pointer', fontSize: '1.5rem', lineHeight: 1 }}
@@ -99,36 +99,51 @@ export default function AddToCartForm({ product }) {
               <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.875rem' }}>
                 <thead>
                   <tr style={{ borderBottom: '1px solid var(--gray-800)' }}>
-                    <th style={{ padding: '1rem', color: 'var(--gray-400)', fontWeight: '500' }}>Size</th>
-                    <th style={{ padding: '1rem', color: 'var(--gray-400)', fontWeight: '500' }}>Chest (in)</th>
-                    <th style={{ padding: '1rem', color: 'var(--gray-400)', fontWeight: '500' }}>Length (in)</th>
+                    <th style={{ padding: '1rem', color: 'var(--gray-400)', fontWeight: '500' }}>Measurement</th>
+                    <th style={{ padding: '1rem', color: 'var(--gray-400)', fontWeight: '500', textAlign: 'center' }}>XS</th>
+                    <th style={{ padding: '1rem', color: 'var(--gray-400)', fontWeight: '500', textAlign: 'center' }}>S</th>
+                    <th style={{ padding: '1rem', color: 'var(--gray-400)', fontWeight: '500', textAlign: 'center' }}>M</th>
+                    <th style={{ padding: '1rem', color: 'var(--gray-400)', fontWeight: '500', textAlign: 'center' }}>L</th>
+                    <th style={{ padding: '1rem', color: 'var(--gray-400)', fontWeight: '500', textAlign: 'center' }}>XL</th>
+                    <th style={{ padding: '1rem', color: 'var(--gray-400)', fontWeight: '500', textAlign: 'center' }}>2XL</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr style={{ borderBottom: '1px solid var(--gray-900)' }}>
-                    <td style={{ padding: '1rem', fontWeight: 'bold' }}>XS</td>
-                    <td style={{ padding: '1rem' }}>40</td>
-                    <td style={{ padding: '1rem' }}>26</td>
+                    <td style={{ padding: '1rem', fontWeight: 'bold' }}>Chest</td>
+                    <td style={{ padding: '1rem', textAlign: 'center' }}>46</td>
+                    <td style={{ padding: '1rem', textAlign: 'center' }}>48.0</td>
+                    <td style={{ padding: '1rem', textAlign: 'center' }}>50.0</td>
+                    <td style={{ padding: '1rem', textAlign: 'center' }}>52</td>
+                    <td style={{ padding: '1rem', textAlign: 'center' }}>55.0</td>
+                    <td style={{ padding: '1rem', textAlign: 'center' }}>57</td>
                   </tr>
                   <tr style={{ borderBottom: '1px solid var(--gray-900)' }}>
-                    <td style={{ padding: '1rem', fontWeight: 'bold' }}>S</td>
-                    <td style={{ padding: '1rem' }}>42</td>
-                    <td style={{ padding: '1rem' }}>27</td>
+                    <td style={{ padding: '1rem', fontWeight: 'bold' }}>Length</td>
+                    <td style={{ padding: '1rem', textAlign: 'center' }}>27</td>
+                    <td style={{ padding: '1rem', textAlign: 'center' }}>28.0</td>
+                    <td style={{ padding: '1rem', textAlign: 'center' }}>29.5</td>
+                    <td style={{ padding: '1rem', textAlign: 'center' }}>30</td>
+                    <td style={{ padding: '1rem', textAlign: 'center' }}>31.5</td>
+                    <td style={{ padding: '1rem', textAlign: 'center' }}>32</td>
                   </tr>
                   <tr style={{ borderBottom: '1px solid var(--gray-900)' }}>
-                    <td style={{ padding: '1rem', fontWeight: 'bold' }}>M</td>
-                    <td style={{ padding: '1rem' }}>44</td>
-                    <td style={{ padding: '1rem' }}>28</td>
-                  </tr>
-                  <tr style={{ borderBottom: '1px solid var(--gray-900)' }}>
-                    <td style={{ padding: '1rem', fontWeight: 'bold' }}>L</td>
-                    <td style={{ padding: '1rem' }}>46</td>
-                    <td style={{ padding: '1rem' }}>29</td>
+                    <td style={{ padding: '1rem', fontWeight: 'bold' }}>Shoulder</td>
+                    <td style={{ padding: '1rem', textAlign: 'center' }}>20</td>
+                    <td style={{ padding: '1rem', textAlign: 'center' }}>21.0</td>
+                    <td style={{ padding: '1rem', textAlign: 'center' }}>22.0</td>
+                    <td style={{ padding: '1rem', textAlign: 'center' }}>23</td>
+                    <td style={{ padding: '1rem', textAlign: 'center' }}>24.0</td>
+                    <td style={{ padding: '1rem', textAlign: 'center' }}>25</td>
                   </tr>
                   <tr>
-                    <td style={{ padding: '1rem', fontWeight: 'bold' }}>XL</td>
-                    <td style={{ padding: '1rem' }}>48</td>
-                    <td style={{ padding: '1rem' }}>30</td>
+                    <td style={{ padding: '1rem', fontWeight: 'bold' }}>Sleeve Length</td>
+                    <td style={{ padding: '1rem', textAlign: 'center' }}>9</td>
+                    <td style={{ padding: '1rem', textAlign: 'center' }}>9.5</td>
+                    <td style={{ padding: '1rem', textAlign: 'center' }}>10.0</td>
+                    <td style={{ padding: '1rem', textAlign: 'center' }}>11</td>
+                    <td style={{ padding: '1rem', textAlign: 'center' }}>11.5</td>
+                    <td style={{ padding: '1rem', textAlign: 'center' }}>12</td>
                   </tr>
                 </tbody>
               </table>
