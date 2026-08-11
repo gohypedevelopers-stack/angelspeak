@@ -38,16 +38,21 @@ export default function ProductCarousel({ products = [] }) {
       <div className="container custom-scrollbar" ref={scrollRef} style={{ display: 'flex', gap: '1rem', overflowX: 'auto', paddingBottom: '4rem', scrollSnapType: 'x mandatory', maxWidth: '1800px' }}>
         {products.map((product) => {
           return (
-            <div key={product.id} className="group" style={{ minWidth: '400px', width: '400px', flexShrink: 0, scrollSnapAlign: 'start' }}>
+            <div key={product.id} className="group carousel-item" style={{ flexShrink: 0, scrollSnapAlign: 'start' }}>
               <ProductCard product={product} />
             </div>
           )})}
       </div>
       <style dangerouslySetInnerHTML={{__html: `
+        .carousel-item { min-width: 380px; width: 380px; }
         .add-btn:hover { background-color: var(--foreground) !important; color: var(--background) !important; border-color: var(--foreground) !important; }
         
         .custom-scrollbar::-webkit-scrollbar { display: none; }
         .custom-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        @media (max-width: 768px) {
+          .carousel-item { min-width: 280px !important; width: 280px !important; }
+        }
       `}} />
     </section>
   );

@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useCart } from '../context/CartContext';
+import { useWishlist } from '../context/WishlistContext';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,6 +15,7 @@ export default function Navbar() {
   const searchRef = useRef(null);
   const router = useRouter();
   const { cartItems, cartCount, cartTotal, isCartOpen, setIsCartOpen, updateQuantity, removeFromCart, checkoutUrl, isUpdating } = useCart();
+  const { wishlistCount, setIsWishlistOpen } = useWishlist();
 
   useEffect(() => {
     if (searchQuery.trim().length > 1) {
@@ -168,6 +170,24 @@ export default function Navbar() {
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
               <span style={{ fontSize: '0.875rem', fontWeight: '500', textTransform: 'uppercase', letterSpacing: '0.05em' }}>ACCOUNT</span>
             </a>
+            {/* Wishlist / Bookmark */}
+            <button 
+              className="hover-scale" 
+              style={{ position: 'relative', background: 'none', border: 'none', color: 'inherit', cursor: 'pointer', padding: 0, display: 'flex', alignItems: 'center', gap: '0.4rem' }}
+              onClick={() => setIsWishlistOpen(true)}
+              title="View Bookmarks"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill={wishlistCount > 0 ? "currentColor" : "none"} stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+              </svg>
+              <span className="desktop-only" style={{ fontSize: '0.875rem', fontWeight: '500', textTransform: 'uppercase', letterSpacing: '0.05em' }}>SAVED</span>
+              {/* Wishlist Badge */}
+              {wishlistCount > 0 && (
+                <span style={{ position: 'absolute', top: '-8px', right: '-12px', backgroundColor: 'var(--foreground)', color: 'var(--background)', fontSize: '0.65rem', fontWeight: '900', padding: '2px 6px', borderRadius: '50%' }}>
+                  {wishlistCount}
+                </span>
+              )}
+            </button>
             {/* Cart */}
             <button 
               className="hover-scale" 
@@ -238,7 +258,19 @@ export default function Navbar() {
             <Link href="/shop#final-form" onClick={() => setIsMenuOpen(false)} className="hover-scale" style={{ transformOrigin: 'left', fontSize: '1rem', color: 'var(--gray-400)' }}>- Final Form</Link>
           </div>
           <Link href="/about-us" onClick={() => setIsMenuOpen(false)} className="hover-scale" style={{ transformOrigin: 'left' }}>About Us</Link>
-          <a href="https://account.angelspeak.in/orders" onClick={() => setIsMenuOpen(false)} className="hover-scale" style={{ transformOrigin: 'left', marginTop: '0.5rem', borderTop: '1px solid var(--gray-800)', paddingTop: '1.5rem', textDecoration: 'none' }}>Account</a>
+          <div 
+            onClick={() => { setIsMenuOpen(false); setIsWishlistOpen(true); }} 
+            className="hover-scale" 
+            style={{ transformOrigin: 'left', marginTop: '0.5rem', borderTop: '1px solid var(--gray-800)', paddingTop: '1.5rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}
+          >
+            <span>Bookmarks</span>
+            {wishlistCount > 0 && (
+              <span style={{ backgroundColor: 'var(--foreground)', color: 'var(--background)', fontSize: '0.75rem', fontWeight: 'bold', padding: '2px 8px', borderRadius: '12px' }}>
+                {wishlistCount}
+              </span>
+            )}
+          </div>
+          <a href="https://account.angelspeak.in/orders" onClick={() => setIsMenuOpen(false)} className="hover-scale" style={{ transformOrigin: 'left', textDecoration: 'none' }}>Account</a>
           <div style={{ marginTop: '2rem', paddingTop: '1.5rem', borderTop: '1px solid var(--gray-800)', display: 'flex', flexDirection: 'column', gap: '0.8rem', fontSize: '0.75rem', color: 'var(--gray-400)', textTransform: 'none', fontWeight: 'normal' }}>
             <strong>Contact Us</strong>
             <span>Email: theangelspeak@gmail.com</span>

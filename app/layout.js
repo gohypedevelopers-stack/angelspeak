@@ -3,8 +3,10 @@ import StickyHeader from './components/StickyHeader';
 import CustomCursor from './components/CustomCursor';
 import Preloader from './components/Preloader';
 import CartDrawer from './components/CartDrawer';
+import WishlistDrawer from './components/WishlistDrawer';
 import WhatsAppButton from './components/WhatsAppButton';
 import { CartProvider } from './context/CartContext';
+import { WishlistProvider } from './context/WishlistContext';
 import './globals.css';
 
 export const metadata = {
@@ -17,55 +19,58 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body suppressHydrationWarning>
         <CartProvider>
-          <Preloader />
-          <CustomCursor />
-          <div className="noise-overlay"></div>
-          <StickyHeader />
-          <CartDrawer />
-          <WhatsAppButton />
-          <main style={{ minHeight: '80vh' }}>
-            {children}
-          </main>
-          <footer style={{ borderTop: '1px solid var(--gray-800)', padding: '4rem 0 2rem' }}>
-            <div className="container">
-              <style dangerouslySetInnerHTML={{__html: `
-                .footer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 4rem; }
-                .footer-links { display: flex; justify-content: flex-end; gap: 4rem; text-transform: uppercase; font-size: 0.875rem; letter-spacing: 0.05em; font-weight: 500; }
-                @media (max-width: 768px) {
-                  .footer-grid { grid-template-columns: 1fr; gap: 3rem; }
-                  .footer-links { justify-content: flex-start; gap: 2rem; flex-direction: column; }
-                }
-              `}} />
-              <div className="footer-grid">
-                <div>
-                  <h2 className="fs-2xl fw-black uppercase" style={{ letterSpacing: '0.05em', marginBottom: '1rem' }}>Built in chaos.<br/>Above all.</h2>
+          <WishlistProvider>
+            <Preloader />
+            <CustomCursor />
+            <div className="noise-overlay"></div>
+            <StickyHeader />
+            <CartDrawer />
+            <WishlistDrawer />
+            <WhatsAppButton />
+            <main style={{ minHeight: '80vh' }}>
+              {children}
+            </main>
+            <footer style={{ borderTop: '1px solid var(--gray-800)', padding: '4rem 0 2rem' }}>
+              <div className="container">
+                <style dangerouslySetInnerHTML={{__html: `
+                  .footer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 4rem; }
+                  .footer-links { display: flex; justify-content: flex-end; gap: 4rem; text-transform: uppercase; font-size: 0.875rem; letter-spacing: 0.05em; font-weight: 500; }
+                  @media (max-width: 768px) {
+                    .footer-grid { grid-template-columns: 1fr; gap: 3rem; }
+                    .footer-links { justify-content: flex-start; gap: 2rem; flex-direction: column; }
+                  }
+                `}} />
+                <div className="footer-grid">
+                  <div>
+                    <h2 className="fs-2xl fw-black uppercase" style={{ letterSpacing: '0.05em', marginBottom: '1rem' }}>Built in chaos.<br/>Above all.</h2>
+                  </div>
+                  <div className="footer-links">
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                      <Link href="/shop">All Drops</Link>
+                      <Link href="/shop#exile-mode">Exile Mode</Link>
+                      <Link href="/shop#peak-state">Peak State</Link>
+                      <Link href="/shop#fallen-division">Fallen Division</Link>
+                      <Link href="/shop#final-form">Final Form</Link>
+                    </div>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                      <Link href="/about-us">About Us</Link>
+                      <Link href="/privacy-policy">Privacy Policy</Link>
+                      <Link href="/refund-policy">Refund Policy</Link>
+                      <Link href="/terms-conditions">Terms & Conditions</Link>
+                    </div>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', color: 'var(--gray-400)', textTransform: 'none' }}>
+                      <span>Email: theangelspeak@gmail.com</span>
+                      <span>Phone: 8393900007</span>
+                      <span style={{ maxWidth: '300px' }}>Address: Janta Tyre Retreading Works, Khanna Farm, Teenpani, Haldwani, Uttarakhand 263139</span>
+                    </div>
+                  </div>
                 </div>
-                <div className="footer-links">
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                    <Link href="/shop">All Drops</Link>
-                    <Link href="/shop#exile-mode">Exile Mode</Link>
-                    <Link href="/shop#peak-state">Peak State</Link>
-                    <Link href="/shop#fallen-division">Fallen Division</Link>
-                    <Link href="/shop#final-form">Final Form</Link>
-                  </div>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                    <Link href="/about-us">About Us</Link>
-                    <Link href="/privacy-policy">Privacy Policy</Link>
-                    <Link href="/refund-policy">Refund Policy</Link>
-                    <Link href="/terms-conditions">Terms & Conditions</Link>
-                  </div>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', color: 'var(--gray-400)', textTransform: 'none' }}>
-                    <span>Email: theangelspeak@gmail.com</span>
-                    <span>Phone: 8393900007</span>
-                    <span style={{ maxWidth: '300px' }}>Address: Janta Tyre Retreading Works, Khanna Farm, Teenpani, Haldwani, Uttarakhand 263139</span>
-                  </div>
+                <div className="fs-xs" style={{ color: 'var(--gray-400)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                  © {new Date().getFullYear()} Angels Peak. Division 01.
                 </div>
               </div>
-              <div className="fs-xs" style={{ color: 'var(--gray-400)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                © {new Date().getFullYear()} Angels Peak. Division 01.
-              </div>
-            </div>
-          </footer>
+            </footer>
+          </WishlistProvider>
         </CartProvider>
       </body>
     </html>
