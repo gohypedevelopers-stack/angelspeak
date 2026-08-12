@@ -68,18 +68,18 @@ export default async function Home() {
       <ProductCarousel products={products.slice(0, 8)} />
 
       {/* NEW: PROMO BANNER */}
-      <PromoBanner />
+      {/* <PromoBanner /> */}
 
       {/* NEW: 4.5 ALL PIECES GRID */}
       <ProductGrid products={products} />
 
-      {/* 5. DROP HIGHLIGHT (EDITORIAL SPOTLIGHT) */}
+      {/* 5. DROP HIGHLIGHT (EDITORIAL SPOTLIGHT) - COMMENTED OUT */}
+      {/*
       <section style={{ backgroundColor: 'var(--background)', padding: '6rem 0', position: 'relative', overflow: 'hidden' }}>
         <div className="container" style={{ maxWidth: '1800px', position: 'relative' }}>
           <ScrollReveal delay={100}>
             <div className="editorial-layout" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', position: 'relative', minHeight: '80vh' }}>
               
-              {/* Massive Image Container */}
               <div className="editorial-img-container" style={{ width: '80%', height: '100%', position: 'absolute', left: 0, top: 0, bottom: 0, borderRadius: '24px', overflow: 'hidden', backgroundColor: '#e5e5e5' }}>
                 <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?q=80&w=1400&auto=format&fit=crop" alt="The Ascent Tee Detail" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', filter: 'grayscale(50%) contrast(1.1) brightness(0.8)' }} />
                 <div style={{ position: 'absolute', top: '2rem', left: '2rem', backgroundColor: 'var(--accent)', color: 'var(--foreground)', padding: '0.5rem 1rem', fontWeight: '900', fontSize: '0.75rem', letterSpacing: '0.1em', borderRadius: '4px' }}>
@@ -87,7 +87,6 @@ export default async function Home() {
                 </div>
               </div>
 
-              {/* Glassmorphism Overlapping Card */}
               <div className="editorial-card" style={{ 
                 width: 'clamp(320px, 40vw, 500px)', 
                 marginLeft: 'auto', 
@@ -148,8 +147,10 @@ export default async function Home() {
           }
         `}} />
       </section>
+      */}
 
-      {/* NEW: 6. THE MOTION (REELS CAROUSEL - CHAPTER 2 INSPIRED) */}
+      {/* NEW: 6. THE MOTION (REELS CAROUSEL - CHAPTER 2 INSPIRED) - COMMENTED OUT */}
+      {/*
       <section style={{ padding: '8rem 0', backgroundColor: 'var(--background)', overflow: 'hidden' }}>
         <div className="container" style={{ marginBottom: '3rem' }}>
           <h2 className="fs-3xl fw-black uppercase text-center">In Motion</h2>
@@ -213,8 +214,10 @@ export default async function Home() {
           </div>
         </ScrollReveal>
       </section>
+      */}
 
-      {/* 7. CHAPTER BLOCKS (ASYMMETRICAL GRID) */}
+      {/* 7. CHAPTER BLOCKS (ASYMMETRICAL GRID) - COMMENTED OUT */}
+      {/*
       <section style={{ padding: '0 clamp(1rem, 5vw, 2rem) 8rem' }}>
         <style dangerouslySetInnerHTML={{__html: `
           .chapter-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 2rem; max-width: 1440px; margin: 0 auto; }
@@ -255,8 +258,10 @@ export default async function Home() {
           </div>
         </ScrollReveal>
       </section>
+      */}
 
-      {/* 8. THE CLIMBERS (COMMUNITY/UGC GRID) */}
+      {/* 8. THE CLIMBERS (COMMUNITY/UGC GRID) - COMMENTED OUT */}
+      {/*
       <section style={{ padding: '4rem 0 8rem', overflow: 'hidden' }}>
         <div className="container" style={{ textAlign: 'center', marginBottom: '4rem' }}>
           <h2 className="fs-3xl fw-black uppercase">The Climbers</h2>
@@ -304,6 +309,7 @@ export default async function Home() {
           </div>
         </ScrollReveal>
       </section>
+      */}
 
       {/* NEW: 3. THE MANIFESTO (CHAPTER 2 INSPIRED) */}
       <section style={{ padding: '10rem 2rem', backgroundColor: 'var(--background)', position: 'relative', overflow: 'hidden' }}>
