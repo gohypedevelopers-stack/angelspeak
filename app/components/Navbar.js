@@ -85,7 +85,7 @@ export default function Navbar() {
           </div>
 
           {/* Right: Utility Icons */}
-          <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '1.5rem', alignItems: 'center', flex: 1 }} ref={searchRef}>
+          <div className="nav-actions" style={{ display: 'flex', justifyContent: 'flex-end', gap: '1.5rem', alignItems: 'center', flex: 1 }} ref={searchRef}>
             
             {/* Expandable Search */}
             <div style={{ display: 'flex', alignItems: 'center', position: 'relative' }}>
@@ -216,10 +216,17 @@ export default function Navbar() {
           
           @media (max-width: 768px) {
             .desktop-only { display: none !important; }
-            .main-nav { padding: 1rem 1.5rem !important; }
-            .logo-img { height: 28px !important; }
+            .main-nav { padding: 1rem 1.25rem !important; }
+            .logo-img { height: 24px !important; max-width: 140px !important; object-fit: contain; }
+            .nav-actions { gap: 1rem !important; }
             .logo-container.search-open { opacity: 0; pointer-events: none; }
             .search-input-wrapper.open { width: calc(100vw - 8rem) !important; }
+          }
+          
+          @media (max-width: 480px) {
+            .main-nav { padding: 0.85rem 1rem !important; }
+            .logo-img { height: 22px !important; max-width: 120px !important; }
+            .nav-actions { gap: 0.85rem !important; }
           }
         `}} />
       </nav>
