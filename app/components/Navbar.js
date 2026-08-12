@@ -80,7 +80,7 @@ export default function Navbar() {
           {/* Center: Brand Logo */}
           <div className={`logo-container ${isSearchOpen ? 'search-open' : ''}`} style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)', textAlign: 'center', display: 'flex', justifyContent: 'center', zIndex: 10, transition: 'opacity 0.2s ease' }}>
             <Link href="/" className="hover-scale" style={{ display: 'inline-block' }}>
-              <img src="/Angel_peak_name_White.png" alt="Angels Peak" className="logo-img" style={{ height: 'clamp(24px, 8vw, 60px)', width: 'auto', objectFit: 'contain' }} />
+              <img src="/Angel_peak_name_White.png" alt="Angels Peak" className="logo-img" style={{ height: 'clamp(22px, 3.5vw, 48px)', maxWidth: '220px', width: 'auto', objectFit: 'contain' }} />
             </Link>
           </div>
 
@@ -214,18 +214,24 @@ export default function Navbar() {
           .search-input-wrapper { width: 0px; }
           .search-input-wrapper.open { width: clamp(150px, 20vw, 250px); }
           
-          @media (max-width: 768px) {
+          @media (max-width: 1024px) {
             .desktop-only { display: none !important; }
-            .main-nav { padding: 1rem 1.25rem !important; }
-            .logo-img { height: 24px !important; max-width: 140px !important; object-fit: contain; }
-            .nav-actions { gap: 1rem !important; }
+            .main-nav { padding: 1rem 1.5rem !important; }
+            .logo-img { height: 28px !important; max-width: 150px !important; object-fit: contain; }
+            .nav-actions { gap: 1.25rem !important; }
             .logo-container.search-open { opacity: 0; pointer-events: none; }
             .search-input-wrapper.open { width: calc(100vw - 8rem) !important; }
           }
           
+          @media (max-width: 768px) {
+            .main-nav { padding: 1rem 1.25rem !important; }
+            .logo-img { height: 24px !important; max-width: 135px !important; }
+            .nav-actions { gap: 1rem !important; }
+          }
+          
           @media (max-width: 480px) {
             .main-nav { padding: 0.85rem 1rem !important; }
-            .logo-img { height: 22px !important; max-width: 120px !important; }
+            .logo-img { height: 22px !important; max-width: 115px !important; }
             .nav-actions { gap: 0.85rem !important; }
           }
         `}} />
