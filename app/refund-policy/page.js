@@ -15,7 +15,7 @@ export default function RefundPolicy() {
 
           <h2 className="fs-xl fw-bold uppercase" style={{ color: 'var(--foreground)', marginTop: '2rem' }}>Damages and Issues</h2>
           <p>
-            Please inspect your order upon reception and contact us immediately if the item is defective, damaged or if you receive the wrong item, so that we can evaluate the issue and make it right.
+            Please inspect your order upon receipt and contact us immediately if the item is defective, damaged, or if you receive the wrong item so that we can evaluate the issue and make it right.
           </p>
 
           <h2 className="fs-xl fw-bold uppercase" style={{ color: 'var(--foreground)', marginTop: '2rem' }}>Refunds</h2>
