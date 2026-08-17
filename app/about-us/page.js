@@ -9,10 +9,10 @@ export default function AboutUs() {
 
           <div className="fs-lg animate-fade-in delay-200" style={{ lineHeight: '1.8', color: 'var(--accent)' }}>
             <p style={{ marginBottom: '2rem' }}>
-              Angels Peak is about ascension — the climb toward your highest self, your peak.
+              Angels Peak is about ascension — the climb towards your highest self, your peak.
             </p>
             <p style={{ marginBottom: '4rem' }}>
-              The angel is the guardian force that walks the climb with you. Not a flex. A companion. And the garment is the channel between you and that force — something you put on when you need reminding what you're climbing toward.
+              The angel is the guardian force that walks the climb with you. Not a flex. A companion. And the garment is the channel between you and that force — something you put on when you need a reminder of what you're climbing towards.
             </p>
 
             <h2 className="fs-xl fw-bold uppercase" style={{ color: 'var(--foreground)', marginBottom: '2rem', letterSpacing: '0.05em' }}>
@@ -64,15 +64,13 @@ export default function AboutUs() {
 
             <div style={{ marginTop: '6rem', paddingTop: '4rem', borderTop: '1px solid var(--gray-800)' }}>
               <h2 className="fs-xl fw-bold uppercase" style={{ color: 'var(--foreground)', marginBottom: '2rem', letterSpacing: '0.05em' }}>
-                Brand Information
+                Contact Information
               </h2>
               <p style={{ marginBottom: '1.5rem', color: 'var(--gray-400)' }}>
-                Angels Peak is for the ones climbing. Built in chaos, tested in isolation, fallen and risen — every piece is a channel between you and the force pulling you toward your peak. Wear your ascent.
+                Angels Peak is for the ones climbing. Built in chaos, tested in isolation, fallen and risen — every piece is a channel between you and the force pulling you towards your peak. Wear your ascent.
               </p>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', color: 'var(--gray-400)' }}>
                 <p><strong>Email:</strong> theangelspeak@gmail.com</p>
-                <p><strong>Phone:</strong> 8393900007</p>
-                <p><strong>Address:</strong> Janta Tyre Retreading Works, Khanna Farm, Teenpani, Haldwani, Uttarakhand 263139</p>
               </div>
             </div>
           </div>

@@ -20,7 +20,7 @@ export default function TermsConditions() {
 
           <h2 className="fs-xl fw-bold uppercase" style={{ color: 'var(--foreground)', marginTop: '2rem' }}>Contact Information</h2>
           <p>
-            For any queries regarding our terms, please contact us at theangelspeak@gmail.com or 8393900007.
+            For any queries regarding our terms, please email us at theangelspeak@gmail.com.
           </p>
         </div>
       </div>

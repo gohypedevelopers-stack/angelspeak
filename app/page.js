@@ -34,7 +34,7 @@ export default async function Home() {
             EVERY PIECE IS A CHANNEL
           </h1>
           <p className="fs-lg delay-200 animate-fade-in" style={{ maxWidth: '800px', marginBottom: '3rem', color: 'var(--accent)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
-            The garment is the channel between you and the force pulling you toward your peak
+            The garment is the channel between you and the force pulling you towards your peak.
           </p>
 
         </div>
@@ -113,7 +113,7 @@ export default async function Home() {
                 </h2>
                 
                 <p className="fs-base" style={{ color: 'var(--gray-400)', marginBottom: '3rem', lineHeight: '1.6' }}>
-                  The whole world on one chest. The Angels Peak wordmark, the wings, the mark of everything we climb toward. If you own one piece from the house, own this one.
+                  The whole world on one chest. The Angels Peak wordmark, the wings, the mark of everything we climb towards. If you own one piece from the house, own this one.
                 </p>
                 
                 <Link href="/shop/the-ascent-tee" style={{

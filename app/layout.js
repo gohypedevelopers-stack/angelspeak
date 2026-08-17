@@ -11,7 +11,7 @@ import './globals.css';
 
 export const metadata = {
   title: 'ANGELS PEAK | Built in Chaos',
-  description: 'Angels Peak is for the ones climbing. Built in chaos, tested in isolation, fallen and risen — every piece is a channel between you and the force pulling you toward your peak. Wear your ascent.',
+  description: 'Angels Peak is for the ones climbing. Built in chaos, tested in isolation, fallen and risen — every piece is a channel between you and the force pulling you towards your peak. Wear your ascent.',
 };
 
 export default function RootLayout({ children }) {
@@ -60,8 +60,6 @@ export default function RootLayout({ children }) {
                     </div>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', color: 'var(--gray-400)', textTransform: 'none' }}>
                       <span>Email: theangelspeak@gmail.com</span>
-                      <span>Phone: 8393900007</span>
-                      <span style={{ maxWidth: '300px' }}>Address: Janta Tyre Retreading Works, Khanna Farm, Teenpani, Haldwani, Uttarakhand 263139</span>
                     </div>
                   </div>
                 </div>

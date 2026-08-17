@@ -285,10 +285,8 @@ export default function Navbar() {
           </div>
           <a href="https://account.angelspeak.in/orders" onClick={() => setIsMenuOpen(false)} className="hover-scale" style={{ transformOrigin: 'left', textDecoration: 'none' }}>Account</a>
           <div style={{ marginTop: '2rem', paddingTop: '1.5rem', borderTop: '1px solid var(--gray-800)', display: 'flex', flexDirection: 'column', gap: '0.8rem', fontSize: '0.75rem', color: 'var(--gray-400)', textTransform: 'none', fontWeight: 'normal' }}>
-            <strong>Contact Us</strong>
+            <strong>Contact</strong>
             <span>Email: theangelspeak@gmail.com</span>
-            <span>Phone: 8393900007</span>
-            <span>Address: Janta Tyre Retreading Works, Khanna Farm, Teenpani, Haldwani, Uttarakhand 263139</span>
           </div>
         </div>
       </div>
