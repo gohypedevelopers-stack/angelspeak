@@ -4,7 +4,6 @@ import AddToCartForm from '../../components/AddToCartForm';
 import ProductCarousel from '../../components/ProductCarousel';
 import ProductTabs from '../../components/ProductTabs';
 import ProductGallery from '../../components/ProductGallery';
-import PromoBanner from '../../components/PromoBanner';
 import { shopifyFetch, getProducts } from '../../lib/shopify';
 
 export const dynamic = 'force-dynamic';
@@ -90,9 +89,6 @@ export default async function ProductPage({ params }) {
     </div>
     <div style={{ borderTop: '1px solid var(--gray-800)', paddingTop: '2rem' }}>
       <ProductCarousel products={allProducts.slice(0, 8)} />
-    </div>
-    <div style={{ borderTop: '1px solid var(--gray-800)', borderBottom: '1px solid var(--gray-800)' }}>
-      <PromoBanner />
     </div>
     <div style={{ paddingTop: '2rem' }}>
       <ProductCarousel products={allProducts.slice(0, 8)} />
