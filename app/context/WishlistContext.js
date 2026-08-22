@@ -50,7 +50,8 @@ export function WishlistProvider({ children }) {
           title: product.title,
           price: product.priceRange?.minVariantPrice?.amount || product.price || 0,
           image: product.images?.edges?.[0]?.node?.url || product.image || '/placeholder.png',
-          variantId: product.variants?.edges?.[0]?.node?.id || product.variantId || product.id
+          variantId: product.variants?.edges?.[0]?.node?.id || product.variantId || product.id,
+          rawProduct: product
         };
         return [...prevItems, formattedProduct];
       }

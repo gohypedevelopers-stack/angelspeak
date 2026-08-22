@@ -9,14 +9,25 @@ export default function WishlistDrawer() {
   const { wishlistItems, wishlistCount, isWishlistOpen, setIsWishlistOpen, removeFromWishlist } = useWishlist();
   const { addToCart, setIsCartOpen } = useCart();
   const [addedItemMap, setAddedItemMap] = useState({});
+  const [selectedSizeItemId, setSelectedSizeItemId] = useState(null);
 
-  const handleAddToCart = (item) => {
+  const handleSelectSizeAndAdd = (item, size) => {
+    const selectedVariant = item.rawProduct?.variants?.edges?.find(
+      (edge) => edge.node?.title?.trim().toLowerCase() === size.trim().toLowerCase()
+    )?.node;
+
+    const variantId = selectedVariant?.id || item.variantId || item.id;
+    const priceToUse = selectedVariant?.price?.amount || item.price;
+
     addToCart({
-      id: item.variantId || item.id,
+      id: variantId,
       title: item.title,
-      price: item.price,
-      image: item.image
+      price: priceToUse,
+      image: item.image,
+      selectedSize: size
     });
+
+    setSelectedSizeItemId(null);
 
     // Provide visual feedback
     setAddedItemMap(prev => ({ ...prev, [item.id]: true }));
@@ -125,38 +136,86 @@ export default function WishlistDrawer() {
                       </p>
                     </div>
 
-                    <button 
-                      onClick={() => handleAddToCart(item)}
-                      style={{ 
-                        backgroundColor: isJustAdded ? '#ffffff' : 'transparent', 
-                        color: isJustAdded ? '#000000' : '#ffffff', 
-                        border: '1px solid #ffffff', 
-                        borderRadius: '6px', 
-                        padding: '0.6rem 1rem', 
-                        fontSize: '0.75rem', 
-                        fontWeight: '800', 
-                        letterSpacing: '0.08em', 
-                        cursor: 'pointer', 
-                        textTransform: 'uppercase',
-                        transition: 'all 0.25s ease',
-                        marginTop: '0.85rem',
-                        width: '100%',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justify: 'center',
-                        gap: '0.4rem'
-                      }}
-                      className="hover-scale"
-                    >
-                      {isJustAdded ? (
-                        <>
-                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                          ADDED TO CART
-                        </>
+                      {/* Size Selector or Add to Cart Button */}
+                      {selectedSizeItemId === item.id ? (
+                        <div style={{ marginTop: '0.75rem', display: 'flex', flexDirection: 'column', gap: '0.5rem', backgroundColor: '#111', padding: '0.75rem', borderRadius: '6px', border: '1px solid #333' }}>
+                          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                            <span style={{ fontSize: '0.65rem', fontWeight: '700', color: '#aaa', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Select Size:</span>
+                            <button 
+                              onClick={() => setSelectedSizeItemId(null)}
+                              style={{ background: 'none', border: 'none', color: '#888', cursor: 'pointer', fontSize: '0.9rem', lineHeight: 1 }}
+                            >
+                              &times;
+                            </button>
+                          </div>
+                          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.35rem' }}>
+                            {['XS', 'S', 'M', 'L', 'XL'].map((size) => (
+                              <button
+                                key={size}
+                                onClick={() => handleSelectSizeAndAdd(item, size)}
+                                style={{
+                                  flex: 1,
+                                  minWidth: '32px',
+                                  padding: '0.35rem 0.25rem',
+                                  borderRadius: '4px',
+                                  border: '1px solid #444',
+                                  backgroundColor: '#222',
+                                  color: '#fff',
+                                  fontSize: '0.7rem',
+                                  fontWeight: '700',
+                                  cursor: 'pointer',
+                                  textAlign: 'center',
+                                  transition: 'all 0.2s ease'
+                                }}
+                                className="hover-scale"
+                                onMouseEnter={(e) => {
+                                  e.currentTarget.style.backgroundColor = '#fff';
+                                  e.currentTarget.style.color = '#000';
+                                }}
+                                onMouseLeave={(e) => {
+                                  e.currentTarget.style.backgroundColor = '#222';
+                                  e.currentTarget.style.color = '#fff';
+                                }}
+                              >
+                                {size}
+                              </button>
+                            ))}
+                          </div>
+                        </div>
                       ) : (
-                        'ADD TO CART'
+                        <button 
+                          onClick={() => setSelectedSizeItemId(item.id)}
+                          style={{ 
+                            backgroundColor: isJustAdded ? '#ffffff' : 'transparent', 
+                            color: isJustAdded ? '#000000' : '#ffffff', 
+                            border: '1px solid #ffffff', 
+                            borderRadius: '6px', 
+                            padding: '0.6rem 1rem', 
+                            fontSize: '0.75rem', 
+                            fontWeight: '800', 
+                            letterSpacing: '0.08em', 
+                            cursor: 'pointer', 
+                            textTransform: 'uppercase',
+                            transition: 'all 0.25s ease',
+                            marginTop: '0.85rem',
+                            width: '100%',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            gap: '0.4rem'
+                          }}
+                          className="hover-scale"
+                        >
+                          {isJustAdded ? (
+                            <>
+                              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                              ADDED TO CART
+                            </>
+                          ) : (
+                            'ADD TO CART'
+                          )}
+                        </button>
                       )}
-                    </button>
                   </div>
                 </div>
               );
