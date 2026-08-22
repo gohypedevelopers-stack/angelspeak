@@ -9,21 +9,35 @@ export default function AddToCartForm({ product }) {
   const [showError, setShowError] = useState(false);
   const sizes = ['XS', 'S', 'M', 'L', 'XL'];
 
+  const selectedVariant = product.variants?.edges?.find(
+    (edge) => edge.node?.title?.trim().toLowerCase() === selectedSize.trim().toLowerCase()
+  )?.node;
+
+  const minPrice = parseFloat(product.priceRange?.minVariantPrice?.amount || 0);
+  const maxPrice = parseFloat(product.priceRange?.maxVariantPrice?.amount || 0);
+
+  let displayPrice = '';
+  if (selectedVariant?.price?.amount) {
+    displayPrice = `₹${parseFloat(selectedVariant.price.amount).toLocaleString('en-IN')}`;
+  } else if (minPrice > 0 && maxPrice > 0 && minPrice !== maxPrice) {
+    displayPrice = `₹${minPrice.toLocaleString('en-IN')} – ₹${maxPrice.toLocaleString('en-IN')}`;
+  } else if (minPrice > 0) {
+    displayPrice = `₹${minPrice.toLocaleString('en-IN')}`;
+  }
+
   const handleAddToCart = async (redirect = false) => {
     if (!selectedSize) {
       setShowError(true);
       setTimeout(() => setShowError(false), 3000);
       return;
     }
-    const selectedVariant = product.variants?.edges?.find(
-      (edge) => edge.node?.title?.trim().toLowerCase() === selectedSize.trim().toLowerCase()
-    )?.node;
     const variantId = selectedVariant?.id || product.variants?.edges?.[0]?.node?.id || product.id;
+    const priceToUse = selectedVariant?.price?.amount || product.priceRange?.minVariantPrice?.amount;
 
     const url = await addToCart({
       id: variantId,
       title: product.title,
-      price: product.priceRange?.minVariantPrice?.amount,
+      price: priceToUse,
       image: product.images?.edges?.[0]?.node?.url || '/placeholder.png',
       selectedSize
     });
@@ -35,6 +49,11 @@ export default function AddToCartForm({ product }) {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+      {displayPrice && (
+        <div style={{ fontSize: '1.25rem', color: 'var(--foreground)', fontWeight: '600', marginTop: '-1rem' }}>
+          {displayPrice}
+        </div>
+      )}
       <div>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
           <span style={{ fontSize: '0.875rem', color: 'var(--gray-200)', fontWeight: '500' }}>Select Size</span>

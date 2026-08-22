@@ -20,7 +20,8 @@ export default async function ProductPage({ params }) {
         handle
         descriptionHtml
         priceRange {
-          minVariantPrice { amount }
+          minVariantPrice { amount currencyCode }
+          maxVariantPrice { amount currencyCode }
         }
         fabric: metafield(namespace: "custom", key: "fabric") { value }
         washcare: metafield(namespace: "custom", key: "washcare") { value }
@@ -28,8 +29,8 @@ export default async function ProductPage({ params }) {
         images(first: 10) {
           edges { node { url altText } }
         }
-        variants(first: 10) {
-          edges { node { id title } }
+        variants(first: 20) {
+          edges { node { id title price { amount currencyCode } } }
         }
       }
     }
@@ -63,13 +64,10 @@ export default async function ProductPage({ params }) {
           <ProductGallery product={product} />
 
           <div className="animate-fade-in delay-200 sticky-info" style={{ paddingTop: '1rem', paddingLeft: '2rem' }}>
-            <div style={{ marginBottom: '3rem' }}>
+            <div style={{ marginBottom: '1.5rem' }}>
               <h1 className="fs-3xl fw-bold uppercase" style={{ marginBottom: '0.5rem', letterSpacing: '0.02em' }}>
                 {product.title}
               </h1>
-              <p style={{ fontSize: '1.125rem', color: 'var(--gray-200)', fontWeight: '500' }}>
-                ₹{price}
-              </p>
             </div>
 
             <div style={{ marginBottom: '2rem' }}>

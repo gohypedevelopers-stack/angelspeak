@@ -49,6 +49,10 @@ export async function getCollections() {
                       amount
                       currencyCode
                     }
+                    maxVariantPrice {
+                      amount
+                      currencyCode
+                    }
                   }
                   images(first: 10) {
                     edges {
@@ -58,10 +62,15 @@ export async function getCollections() {
                       }
                     }
                   }
-                  variants(first: 1) {
+                  variants(first: 20) {
                     edges {
                       node {
                         id
+                        title
+                        price {
+                          amount
+                          currencyCode
+                        }
                       }
                     }
                   }
@@ -93,6 +102,10 @@ export async function getProducts() {
                 amount
                 currencyCode
               }
+              maxVariantPrice {
+                amount
+                currencyCode
+              }
             }
             images(first: 10) {
               edges {
@@ -102,10 +115,15 @@ export async function getProducts() {
                 }
               }
             }
-            variants(first: 1) {
+            variants(first: 20) {
               edges {
                 node {
                   id
+                  title
+                  price {
+                    amount
+                    currencyCode
+                  }
                 }
               }
             }
