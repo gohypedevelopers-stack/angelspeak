@@ -15,7 +15,11 @@ export default function AddToCartForm({ product }) {
       setTimeout(() => setShowError(false), 3000);
       return;
     }
-    const variantId = product.variants?.edges?.[0]?.node?.id || product.id;
+    const selectedVariant = product.variants?.edges?.find(
+      (edge) => edge.node?.title?.trim().toLowerCase() === selectedSize.trim().toLowerCase()
+    )?.node;
+    const variantId = selectedVariant?.id || product.variants?.edges?.[0]?.node?.id || product.id;
+
     const url = await addToCart({
       id: variantId,
       title: product.title,
